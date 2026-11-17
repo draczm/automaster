@@ -63,6 +63,7 @@ if ($headerRole === 'admin') {
     <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
     <link rel="stylesheet" href="<?= $basePath ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= $basePath ?>assets/css/admin.css">
+    <link rel="stylesheet" href="<?= $basePath ?>assets/css/home.css">
 </head>
 <body>
 

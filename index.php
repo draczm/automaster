@@ -85,12 +85,12 @@ function homeServiceImage($service, $index)
     }
 
     $fallbacks = [
-        'assets/img/services/service-1.jpg',
-        'assets/img/services/service-2.jpg',
-        'assets/img/services/service-3.jpg',
-        'assets/img/services/service-4.jpg',
-        'assets/img/services/service-5.jpg',
-        'assets/img/services/service-6.jpg'
+        'assets/images/service-1.jpg',
+        'assets/images/service-2.jpg',
+        'assets/images/service-3.jpg',
+        'assets/images/service-4.jpg',
+        'assets/images/service-5.jpg',
+        'assets/images/service-6.jpg'
     ];
 
     return $fallbacks[$index % count($fallbacks)];
