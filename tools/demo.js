@@ -124,7 +124,7 @@
         e.stopImmediatePropagation();
 
         if (form.id === 'appointmentForm') {
-            toast('Демо-режим: запись показана как созданная, но не сохраняется.');
+            saveAppointment(form);
         } else if (form.id === 'registerForm') {
             toast('Демо-режим: регистрация отключена. Войдите под демо-аккаунтом.');
         } else if ((form.method || 'get').toLowerCase() === 'get') {
@@ -134,6 +134,237 @@
         }
     }
     document.addEventListener('submit', onSubmit, true);
+
+
+    /* ---------- заявки, сохранённые в браузере ---------- */
+    var STORE_KEY = 'cr_demo_appts_v1';
+
+    function loadLocal() {
+        try { return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch (e) { return []; }
+    }
+
+    function storeLocal(list) {
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); return true; } catch (e) { return false; }
+    }
+
+    function val(form, name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        return el ? String(el.value || '').trim() : '';
+    }
+
+    function saveAppointment(form) {
+        var sel = form.querySelector('#service_id');
+        var opt = sel && sel.options[sel.selectedIndex];
+        var date = val(form, 'preferred_date');
+        var time = val(form, 'preferred_time');
+        var emp = val(form, 'employee_id');
+
+        if (!opt || !opt.value || !date || !time || !emp) {
+            toast('Выберите услугу, дату, время и мастера.');
+            return;
+        }
+
+        var masterEl = form.querySelector('.master-card.is-selected strong');
+        var name = (opt.textContent || '').split(' — ')[0].trim();
+        var brand = val(form, 'car_brand');
+        var model = val(form, 'car_model');
+
+        loadAjax().then(function (data) {
+            var shift = weeksShiftDays(data.built);
+            var list = loadLocal();
+            list.push({
+                id: Date.now(),
+                service: name,
+                price: Number(opt.dataset.price || 0),
+                duration: Number(opt.dataset.duration || 60),
+                client: val(form, 'client_name'),
+                phone: val(form, 'phone'),
+                car: (brand + ' ' + model).trim(),
+                plate: val(form, 'license_plate'),
+                date: shiftDate(date, -shift),
+                realDate: date,
+                time: time.substring(0, 5),
+                employeeId: emp,
+                master: masterEl ? masterEl.textContent.trim() : 'Мастер',
+                comment: val(form, 'work_description'),
+                status: 'Новая',
+                pay: 'Не оплачено'
+            });
+            storeLocal(list);
+            toast('Заявка создана и сохранена в этом браузере. Она появилась в календарях и списках.');
+            setTimeout(function () { location.reload(); }, 1800);
+        });
+    }
+
+    function isoFromRu(text) {
+        var m = String(text || '').match(/(\d{2})\.(\d{2})\.(\d{4})/);
+        return m ? m[3] + '-' + m[2] + '-' + m[1] : '';
+    }
+
+    function ruFromIso(iso) {
+        var p = String(iso).split('-');
+        return p[2] + '.' + p[1] + '.' + p[0];
+    }
+
+    function money(n) {
+        return Number(n).toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function endTime(a) {
+        var p = a.time.split(':');
+        var total = (+p[0]) * 60 + (+p[1]) + (a.duration || 60);
+        return String(Math.floor(total / 60)).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0');
+    }
+
+    function esc2(t) {
+        var d = document.createElement('div');
+        d.textContent = t == null ? '' : String(t);
+        return d.innerHTML;
+    }
+
+    function metaBox(label, value) {
+        return '<div><span>' + esc2(label) + '</span><strong>' + esc2(value) + '</strong></div>';
+    }
+
+    function setData(el, a, isEmp) {
+        var d = el.dataset;
+        d.service = a.service; d.client = a.client; d.phone = a.phone; d.car = a.car; d.plate = a.plate;
+        d.master = a.master; d.date = ruFromIso(a.date); d.time = a.time + ' — ' + endTime(a);
+        d.status = a.status; d.pay = a.pay; d.comment = a.comment || '';
+        d.price = money(isEmp ? Math.round(a.price * 0.3) : a.price);
+        if (isEmp) { d.priceLabel = 'Оплата мастера'; }
+        d.local = '1';
+    }
+
+    function renderCalendar() {
+        var grid = document.querySelector('.admin-calendar-grid');
+        if (!grid) { return; }
+        var isEmp = !!document.querySelector('.master-calendar');
+        var cfg = isEmp ? { start: 540, end: 1140, h: 52 } : { start: 510, end: 1260, h: 58 };
+        var heads = grid.querySelectorAll('.admin-calendar-day-head span');
+        var cols = grid.querySelectorAll('.admin-calendar-day-column');
+        var dates = Array.prototype.map.call(heads, function (h) { return isoFromRu(h.textContent); });
+
+        loadLocal().forEach(function (a) {
+            if (isEmp && String(a.employeeId) !== '1') { return; }
+            var idx = dates.indexOf(a.date);
+            if (idx < 0) { return; }
+            var p = a.time.split(':');
+            var startMin = (+p[0]) * 60 + (+p[1]);
+            if (startMin < cfg.start || startMin >= cfg.end) { return; }
+
+            var top = Math.round((startMin - cfg.start) / 30 * cfg.h);
+            var height = Math.max(44, Math.round((a.duration || 60) / 30 * cfg.h - 6));
+            var el = document.createElement(isEmp ? 'a' : 'article');
+            el.className = 'admin-calendar-event admin-calendar-event--new';
+            el.style.cssText = 'top:' + top + 'px;height:' + height + 'px;z-index:40;outline:2px dashed #fff;outline-offset:-4px;';
+            if (isEmp) { el.href = '#'; } else { el.tabIndex = 0; el.setAttribute('role', 'button'); }
+            setData(el, a, isEmp);
+
+            el.innerHTML = '<div class="admin-calendar-event__time">' + esc2(a.time) + ' — ' + endTime(a) + '</div>' +
+                '<strong>' + esc2(a.service) + '</strong>' +
+                '<span>' + esc2(a.client) + '</span>' +
+                '<span>' + esc2(a.car) + '</span>' +
+                (isEmp ? '' : '<span>' + esc2(a.master) + '</span>') +
+                '<div class="admin-calendar-event__bottom"><em class="status-badge status-badge--new">Новая · ваша</em></div>';
+
+            var empty = cols[idx].querySelector('.admin-calendar-empty-day');
+            if (empty) { empty.remove(); }
+            cols[idx].appendChild(el);
+        });
+    }
+
+    function renderDayList() {
+        var title = document.querySelector('.master-section-card:not(.master-calendar) h2');
+        var section = title && title.closest('.master-section-card');
+        if (!section) { return; }
+        var iso = isoFromRu(title.textContent);
+        var items = loadLocal().filter(function (a) { return a.date === iso && String(a.employeeId) === '1'; });
+        if (!items.length) { return; }
+
+        var box = section.querySelector('.master-records');
+        if (!box) {
+            var empty = section.querySelector('.empty-text');
+            if (empty) { empty.remove(); }
+            box = document.createElement('div');
+            box.className = 'master-records';
+            section.appendChild(box);
+        }
+
+        items.forEach(function (a) {
+            var card = document.createElement('article');
+            card.className = 'master-record-card';
+            card.innerHTML =
+                '<div class="master-record-time master-record-time--new"><strong>' + esc2(a.time) + '</strong><span>' + endTime(a) + '</span></div>' +
+                '<div class="master-record-content">' +
+                '<div class="record-card__top"><div><h3>' + esc2(a.service) + '</h3><p>' + esc2(a.client) + ' · ' + esc2(a.phone) + '</p></div>' +
+                '<span class="status-badge status-badge--new">Новая · ваша</span></div>' +
+                '<div class="record-card__meta">' + metaBox('Автомобиль', a.car) + metaBox('Госномер', a.plate || 'не указан') +
+                metaBox('Оплата мастера', money(Math.round(a.price * 0.3))) + '</div>' +
+                (a.comment ? '<p class="record-card__comment">' + esc2(a.comment) + '</p>' : '') +
+                '</div>';
+            box.insertBefore(card, box.firstChild);
+        });
+    }
+
+    function renderAdminList() {
+        var list = document.querySelector('.admin-appointment-list');
+        if (!list || !/appointments\.html$/.test(location.pathname)) { return; }
+        loadLocal().forEach(function (a) {
+            var card = document.createElement('article');
+            card.className = 'admin-appointment-card';
+            card.innerHTML =
+                '<div class="admin-appointment-card__top"><div>' +
+                '<span class="admin-card-time">' + ruFromIso(a.date) + ' ' + esc2(a.time) + '</span>' +
+                '<h3>' + esc2(a.service) + '</h3><p>' + esc2(a.client) + ' · ' + esc2(a.phone) + '</p></div>' +
+                '<span class="status-badge status-badge--new">Новая · ваша</span></div>' +
+                '<div class="record-card__meta">' + metaBox('Автомобиль', a.car) + metaBox('Госномер', a.plate || 'не указан') +
+                metaBox('Мастер', a.master) + metaBox('Стоимость', money(a.price)) + metaBox('Оплата', a.pay) + '</div>' +
+                (a.comment ? '<p class="record-card__comment">' + esc2(a.comment) + '</p>' : '');
+            list.insertBefore(card, list.firstChild);
+        });
+    }
+
+    function renderProfile() {
+        if (!/profile\.html$/.test(location.pathname)) { return; }
+        var items = loadLocal();
+        if (!items.length) { return; }
+        var list = document.querySelector('.records-list');
+        if (!list) {
+            var empty = Array.prototype.filter.call(document.querySelectorAll('.empty-text'), function (e) {
+                return /Активных записей нет/.test(e.textContent);
+            })[0];
+            if (!empty) { return; }
+            list = document.createElement('div');
+            list.className = 'records-list';
+            empty.replaceWith(list);
+        }
+        items.forEach(function (a) {
+            var card = document.createElement('article');
+            card.className = 'record-card';
+            card.innerHTML =
+                '<div class="record-card__top"><div><h3>' + esc2(a.service) + '</h3><p>' + esc2(a.car) + (a.plate ? ' · ' + esc2(a.plate) : '') + '</p></div>' +
+                '<span class="status-badge status-badge--new">Новая · ваша</span></div>' +
+                '<div class="record-card__meta">' + metaBox('Дата и время', ruFromIso(a.date) + ' ' + a.time) +
+                metaBox('Мастер', a.master) + metaBox('Стоимость', money(a.price)) + '</div>';
+            list.insertBefore(card, list.firstChild);
+        });
+    }
+
+    function addClearButton() {
+        var n = loadLocal().length;
+        if (!n) { return; }
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = 'Сбросить мои заявки (' + n + ')';
+        b.style.cssText = 'position:fixed;left:14px;bottom:14px;z-index:9999;padding:7px 12px;border:0;border-radius:999px;' +
+            'background:#d97852;color:#fff;font:700 11px/1 Inter,Arial,sans-serif;cursor:pointer;';
+        b.addEventListener('click', function () {
+            storeLocal([]);
+            location.reload();
+        });
+        document.body.appendChild(b);
+    }
 
     /* ---------- подсказка с аккаунтами на странице входа ---------- */
     function addLoginHint() {
@@ -161,6 +392,11 @@
     function init() {
         addLoginHint();
         addBadge();
+        renderCalendar();
+        renderDayList();
+        renderAdminList();
+        renderProfile();
+        addClearButton();
     }
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
