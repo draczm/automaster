@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+                            <a
+                    href="index.html"
+                    class=""
+                >
+                    Главная
+                </a>
+
+                <a href="index.html#services">Услуги</a>
+                <a href="index.html#team">Команда</a>
+                <a href="index.html#faq">FAQ</a>
+
+                <a
+                    href="appointment.html"
+                    class=" is-active"
+                >
+                    Записаться
+                </a>
+
+                                    <a
+                        href="login.html"
+                        class="mobile-auth-link"
+                    >
+                        Вход
+                    </a>
+
+                    <a
+                        href="register.html"
+                        class="mobile-auth-link mobile-auth-link--register"
+                    >
+                        Регистрация
+                    </a>
+                            
+            
+                    </nav>
+
+        <div class="header-actions">
+                            <a
+                    href="login.html"
+                    class="header-login"
+                >
+                    Вход
+                </a>
+
+                <a
+                    href="register.html"
+                    class="nav__button nav__button--green"
+                >
+                    Регистрация
+                </a>
+            
+            
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="form-section appointment-page">
+    <div class="container">
+        <div class="form-card form-card--wide">
+            <span class="label">Онлайн-запись</span>
+
+            <h1>Запись на ремонт</h1>
+
+            <p>
+                Выберите услугу, дату, свободное время и мастера.
+                Если мастеров нет, дата или время не будут доступны для выбора.
+            </p>
+
+            
+            
+            <form method="post" action="appointment.html" id="appointmentForm" class="appointment-form">
+                <input
+                    type="hidden"
+                    id="preferred_time"
+                    name="preferred_time"
+                    value=""
+                >
+
+                <input
+                    type="hidden"
+                    id="employee_id"
+                    name="employee_id"
+                    value=""
+                >
+
+                <div class="appointment-block">
+                    <h2>1. Контакты клиента</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client_name">ФИО *</label>
+                            <input
+                                type="text"
+                                id="client_name"
+                                name="client_name"
+                                value=""
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                value=""
+                                placeholder="+7 927 000-00-00"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-block">
+                    <h2>2. Услуга и дата</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service_id">Услуга *</label>
+
+                            <select id="service_id" name="service_id" required>
+                                <option value="">Выберите услугу</option>
+
+                                                                    
+                                    <option
+                                        value="1"
+                                        data-price="1800.00"
+                                        data-duration="60"
+                                                                            >
+                                        Замена моторного масла                                        — 1 800 ₽
+                                    </option>
+                                                                    
+                                    <option
+                                        value="5"
+                                        data-price="1600.00"
+                                        data-duration="60"
+                                                                            >
+                                        Замена свечей зажигания                                        — 1 600 ₽
+                                    </option>
+                                                                    
+                                    <option
+                                        value="3"
+                                        data-price="2500.00"
+                                        data-duration="120"
+                                                                            >
+                                        Диагностика двигателя                                        — 2 500 ₽
+                                    </option>
+                                                                    
+                                    <option
+                                        value="2"
+                                        data-price="2000.00"
+                                        data-duration="60"
+                                        selected                                    >
+                                        Компьютерная диагностика                                        — 2 000 ₽
+                                    </option>
+                                                                    
+                                    <option
+                                        value="4"
+                                        data-price="4500.00"
+                                        data-duration="180"
+                                                                            >
+                                        Ремонт тормозной системы                                        — 4 500 ₽
+                                    </option>
+                                                                    
+                                    <option
+                                        value="6"
+                                        data-price="2400.00"
+                                        data-duration="60"
+                                                                            >
+                                        Шиномонтаж (комплект)                                        — 2 400 ₽
+                                    </option>
+                                                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred_date">Дата *</label>
+
+                            <input
+                                type="date"
+                                id="preferred_date"
+                                name="preferred_date"
+                                min="2026-11-17"
+                                value=""
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="appointment-summary" id="serviceSummary">
+                        Выберите услугу, чтобы увидеть длительность и стоимость.
+                    </div>
+                </div>
+
+                <div class="appointment-block">
+                    <h2>3. Свободное время</h2>
+
+                    <div class="dynamic-zone" id="timeZone">
+                        <p class="muted-text">Сначала выберите услугу и доступную дату.</p>
+                    </div>
+                </div>
+
+                <div class="appointment-block">
+                    <h2>4. Мастер</h2>
+
+                    <div class="dynamic-zone" id="masterZone">
+                        <p class="muted-text">Мастер появится после выбора времени.</p>
+                    </div>
+                </div>
+
+                <div class="appointment-block">
+                    <h2>5. Автомобиль и задача</h2>
+
+                                            <p class="muted-text">
+                            В личном кабинете пока нет сохраненных автомобилей.
+                            Можно заполнить данные вручную.
+                        </p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="car_brand">Марка автомобиля *</label>
+
+                            <input
+                                type="text"
+                                id="car_brand"
+                                name="car_brand"
+                                value=""
+                                placeholder="Toyota"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="car_model">Модель автомобиля *</label>
+
+                            <input
+                                type="text"
+                                id="car_model"
+                                name="car_model"
+                                value=""
+                                placeholder="Camry"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="car_year">Год выпуска</label>
+
+                            <input
+                                type="number"
+                                id="car_year"
+                                name="car_year"
+                                min="1980"
+                                max="2027"
+                                value=""
+                                placeholder="2018"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="license_plate">Госномер</label>
+
+                            <input
+                                type="text"
+                                id="license_plate"
+                                name="license_plate"
+                                value=""
+                                placeholder="А123ВС12"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work_description">Что нужно сделать? *</label>
+
+                        <textarea
+                            id="work_description"
+                            name="work_description"
+                            placeholder="Например: горит check engine, нужно проверить электрику"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+
+                        <textarea
+                            id="comment"
+                            name="comment"
+                            placeholder="Дополнительная информация для администратора или мастера"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--orange">
+                    Отправить заявку
+                </button>
+
+                                    <p class="form-note">
+                        Чтобы видеть историю заявок и получать баллы,
+                        <a href="register.html">зарегистрируйтесь</a>.
+                    </p>
+                            </form>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/demo.js" defer></script>
+</body>
+</html>

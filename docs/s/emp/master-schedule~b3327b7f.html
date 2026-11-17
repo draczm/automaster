@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="master-schedule.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+                            <a
+                    href="master-schedule.html"
+                    class="nav__button is-active"
+                >
+                    Ежедневник
+                </a>
+
+                <a
+                    href="master-training.html"
+                    class=""
+                >
+                    Обучение
+                </a>
+            
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+                            <a
+                    href="master-schedule.html"
+                    class="user-name is-active"
+                >
+                    Александр Петров                </a>
+
+                <a href="../../index.html" class="header-login">Выйти</a>
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="master-page">
+    <div class="container">
+        <div class="master-hero">
+            <div>
+                <span class="label">Кабинет мастера</span>
+
+                <h1>Ежедневник</h1>
+
+                <p>
+                    Александр Петров,
+                    здесь показаны записи на выбранную дату, статусы работ и краткая статистика.
+                </p>
+            </div>
+
+            <form method="get" action="master-schedule.html" class="master-date-form">
+                <label for="date">Дата</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value="2026-11-17"
+                >
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Показать
+                </button>
+            </form>
+        </div>
+
+        
+        
+        <div class="master-stats-grid">
+            <article class="master-stat-card">
+                <span>День</span>
+                <strong>0</strong>
+                <p>оказано услуг</p>
+                <b>0 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Неделя</span>
+                <strong>2</strong>
+                <p>оказано услуг</p>
+                <b>1 890 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Месяц</span>
+                <strong>2</strong>
+                <p>оказано услуг</p>
+                <b>1 890 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Активные</span>
+                <strong>2</strong>
+                <p>на выбранную дату</p>
+                <b>0 отменено</b>
+            </article>
+        </div>
+
+        <section class="master-section-card">
+            <div class="profile-section-head">
+                <div>
+                    <span class="label">Записи</span>
+                    <h2>17.11.2026</h2>
+                </div>
+            </div>
+
+                            <div class="master-records">
+                                            
+                        <article class="master-record-card">
+                            <div class="master-record-time master-record-time--confirmed">
+                                <strong>09:00</strong>
+                                <span>10:00</span>
+                            </div>
+
+                            <div class="master-record-content">
+                                <div class="record-card__top">
+                                    <div>
+                                        <h3>Замена моторного масла</h3>
+
+                                        <p>
+                                            Иван Сидоров                                            ·
+                                            +7 900 111-11-11                                        </p>
+                                    </div>
+
+                                    <span class="status-badge status-badge--confirmed">
+                                        Подтверждена                                    </span>
+                                </div>
+
+                                <div class="record-card__meta">
+                                    <div>
+                                        <span>Автомобиль</span>
+                                        <strong>
+                                            Toyota                                            Camry                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Госномер</span>
+                                        <strong>А111АА77</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Оплата мастера</span>
+                                        <strong>540 ₽</strong>
+                                    </div>
+                                </div>
+
+                                                                    <p class="record-card__comment">
+                                        Замена моторного масла                                    </p>
+                                
+                                
+                                <details class="master-more">
+                                    <summary>Еще</summary>
+
+                                    <div class="master-actions">
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form">
+                                            <input type="hidden" name="action" value="change_status">
+                                            <input type="hidden" name="appointment_id" value="4">
+
+                                            <select name="status">
+                                                <option value="Подтверждена" selected>
+                                                    Подтверждена
+                                                </option>
+
+                                                <option value="В работе" >
+                                                    В работе
+                                                </option>
+
+                                                <option value="Оказана" >
+                                                    Оказана
+                                                </option>
+
+                                                <option value="Отменена" >
+                                                    Отменена
+                                                </option>
+                                            </select>
+
+                                            <button type="submit" class="btn btn--orange btn--small">
+                                                Сохранить статус
+                                            </button>
+                                        </form>
+
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form master-inline-form--move">
+                                            <input type="hidden" name="action" value="move_appointment">
+                                            <input type="hidden" name="appointment_id" value="4">
+
+                                            <input
+                                                type="date"
+                                                name="new_date"
+                                                value="2026-11-17"
+                                                min="2026-11-17"
+                                            >
+
+                                            <input
+                                                type="time"
+                                                name="new_time"
+                                                value="09:00"
+                                            >
+
+                                            <button type="submit" class="btn btn--light btn--small">
+                                                Перенести
+                                            </button>
+                                        </form>
+
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form">
+                                            <input type="hidden" name="action" value="transfer_master">
+                                            <input type="hidden" name="appointment_id" value="4">
+
+                                            <select name="new_employee_id">
+                                                <option value="">Передать мастеру</option>
+
+                                                                                                                                                        
+                                                    <option value="3">
+                                                        Дмитрий Крылов                                                        — Мастер-диагност                                                    </option>
+                                                                                                    
+                                                    <option value="4">
+                                                        Михаил Волков                                                        — Автоэлектрик                                                    </option>
+                                                                                                    
+                                                    <option value="5">
+                                                        Сергей Ким                                                        — Шиномонтажник                                                    </option>
+                                                                                            </select>
+
+                                            <button type="submit" class="btn btn--light btn--small">
+                                                Передать
+                                            </button>
+                                        </form>
+                                    </div>
+                                </details>
+                            </div>
+                        </article>
+                                            
+                        <article class="master-record-card">
+                            <div class="master-record-time master-record-time--confirmed">
+                                <strong>14:00</strong>
+                                <span>16:00</span>
+                            </div>
+
+                            <div class="master-record-content">
+                                <div class="record-card__top">
+                                    <div>
+                                        <h3>Диагностика двигателя</h3>
+
+                                        <p>
+                                            Андрей Васильев                                            ·
+                                            +7 900 555-55-55                                        </p>
+                                    </div>
+
+                                    <span class="status-badge status-badge--confirmed">
+                                        Подтверждена                                    </span>
+                                </div>
+
+                                <div class="record-card__meta">
+                                    <div>
+                                        <span>Автомобиль</span>
+                                        <strong>
+                                            Hyundai                                            Solaris                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Госномер</span>
+                                        <strong>М555ММ77</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Оплата мастера</span>
+                                        <strong>750 ₽</strong>
+                                    </div>
+                                </div>
+
+                                                                    <p class="record-card__comment">
+                                        Диагностика двигателя                                    </p>
+                                
+                                
+                                <details class="master-more">
+                                    <summary>Еще</summary>
+
+                                    <div class="master-actions">
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form">
+                                            <input type="hidden" name="action" value="change_status">
+                                            <input type="hidden" name="appointment_id" value="7">
+
+                                            <select name="status">
+                                                <option value="Подтверждена" selected>
+                                                    Подтверждена
+                                                </option>
+
+                                                <option value="В работе" >
+                                                    В работе
+                                                </option>
+
+                                                <option value="Оказана" >
+                                                    Оказана
+                                                </option>
+
+                                                <option value="Отменена" >
+                                                    Отменена
+                                                </option>
+                                            </select>
+
+                                            <button type="submit" class="btn btn--orange btn--small">
+                                                Сохранить статус
+                                            </button>
+                                        </form>
+
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form master-inline-form--move">
+                                            <input type="hidden" name="action" value="move_appointment">
+                                            <input type="hidden" name="appointment_id" value="7">
+
+                                            <input
+                                                type="date"
+                                                name="new_date"
+                                                value="2026-11-17"
+                                                min="2026-11-17"
+                                            >
+
+                                            <input
+                                                type="time"
+                                                name="new_time"
+                                                value="14:00"
+                                            >
+
+                                            <button type="submit" class="btn btn--light btn--small">
+                                                Перенести
+                                            </button>
+                                        </form>
+
+                                        <form method="post" action="master-schedule~b3327b7f.html" class="master-inline-form">
+                                            <input type="hidden" name="action" value="transfer_master">
+                                            <input type="hidden" name="appointment_id" value="7">
+
+                                            <select name="new_employee_id">
+                                                <option value="">Передать мастеру</option>
+
+                                                                                                                                                        
+                                                    <option value="3">
+                                                        Дмитрий Крылов                                                        — Мастер-диагност                                                    </option>
+                                                                                                    
+                                                    <option value="4">
+                                                        Михаил Волков                                                        — Автоэлектрик                                                    </option>
+                                                                                                    
+                                                    <option value="5">
+                                                        Сергей Ким                                                        — Шиномонтажник                                                    </option>
+                                                                                            </select>
+
+                                            <button type="submit" class="btn btn--light btn--small">
+                                                Передать
+                                            </button>
+                                        </form>
+                                    </div>
+                                </details>
+                            </div>
+                        </article>
+                                    </div>
+                    </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/demo.js" defer></script>
+</body>
+</html>

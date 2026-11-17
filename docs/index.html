@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+                            <a
+                    href="index.html"
+                    class=" is-active"
+                >
+                    Главная
+                </a>
+
+                <a href="index.html#services">Услуги</a>
+                <a href="index.html#team">Команда</a>
+                <a href="index.html#faq">FAQ</a>
+
+                <a
+                    href="appointment.html"
+                    class=""
+                >
+                    Записаться
+                </a>
+
+                                    <a
+                        href="login.html"
+                        class="mobile-auth-link"
+                    >
+                        Вход
+                    </a>
+
+                    <a
+                        href="register.html"
+                        class="mobile-auth-link mobile-auth-link--register"
+                    >
+                        Регистрация
+                    </a>
+                            
+            
+                    </nav>
+
+        <div class="header-actions">
+                            <a
+                    href="login.html"
+                    class="header-login"
+                >
+                    Вход
+                </a>
+
+                <a
+                    href="register.html"
+                    class="nav__button nav__button--green"
+                >
+                    Регистрация
+                </a>
+            
+            
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="hero home-hero">
+    <div class="container hero__inner">
+        <div class="hero__content">
+            <span class="label">Автомастерская полного цикла</span>
+
+            <h1>Запись на сервис без звонков и ожидания</h1>
+
+            <p>
+                CARREPAIR помогает выбрать услугу, дату, время и мастера.
+                Клиент видит историю обслуживания, а сотрудники работают с заявками
+                через понятный личный кабинет.
+            </p>
+
+            <div class="hero__actions">
+                <a href="appointment.html" class="btn btn--orange">
+                    Записаться на услугу
+                </a>
+
+                <a href="#services" class="btn btn--light">
+                    Смотреть услуги
+                </a>
+            </div>
+
+            <div class="home-hero__metrics">
+                <div>
+                    <span>08:30–21:00</span>
+                    <p>рабочее время</p>
+                </div>
+
+                <div>
+                    <span>Онлайн</span>
+                    <p>выбор даты и мастера</p>
+                </div>
+
+                <div>
+                    <span>Бонусы</span>
+                    <p>за выполненные услуги</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero__media">
+            <div class="hero__card home-hero__panel">
+                <div class="home-hero__top">
+                    <span>Сегодня</span>
+                    <strong>Свободные окна</strong>
+                </div>
+
+                <div class="home-hero__schedule">
+                    <div>
+                        <span>09:00</span>
+                        <p>Диагностика двигателя</p>
+                    </div>
+
+                    <div>
+                        <span>12:30</span>
+                        <p>Замена масла</p>
+                    </div>
+
+                    <div>
+                        <span>16:00</span>
+                        <p>Ремонт тормозной системы</p>
+                    </div>
+                </div>
+
+                <div class="home-hero__note">
+                    <span></span>
+                    <p>Время показывается только при наличии свободного мастера.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-strip">
+    <div class="container home-strip__grid">
+        <div>
+            <span>01</span>
+            <p>Клиент выбирает услугу и удобное время.</p>
+        </div>
+
+        <div>
+            <span>02</span>
+            <p>Система показывает доступных мастеров.</p>
+        </div>
+
+        <div>
+            <span>03</span>
+            <p>Администратор и мастер видят запись в расписании.</p>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-head services__head">
+            <span class="label">Услуги</span>
+
+            <h2>Основные направления сервиса</h2>
+
+            <p>
+                В каталоге отображаются активные услуги с ценой и временем выполнения.
+                После выбора услуги система подбирает доступные даты и мастеров.
+            </p>
+        </div>
+
+                    <div class="services__grid">
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-1.jpg"
+                            alt="Замена моторного масла"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Техническое обслуживание</span>
+                                <span>1 ч.</span>
+                            </div>
+
+                            <h3>Замена моторного масла</h3>
+
+                            <p>Замена масла и масляного фильтра</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    1 800 ₽                                </strong>
+
+                                <a href="appointment~1e98c60e.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-5.jpg"
+                            alt="Замена свечей зажигания"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Техническое обслуживание</span>
+                                <span>1 ч.</span>
+                            </div>
+
+                            <h3>Замена свечей зажигания</h3>
+
+                            <p>Замена комплекта свечей зажигания</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    1 600 ₽                                </strong>
+
+                                <a href="appointment~492a72f7.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-3.jpg"
+                            alt="Диагностика двигателя"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Диагностика</span>
+                                <span>2 ч.</span>
+                            </div>
+
+                            <h3>Диагностика двигателя</h3>
+
+                            <p>Полная проверка двигателя: компрессия, форсунки, зажигание</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    2 500 ₽                                </strong>
+
+                                <a href="appointment~eea81bc5.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-2.jpg"
+                            alt="Компьютерная диагностика"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Диагностика</span>
+                                <span>1 ч.</span>
+                            </div>
+
+                            <h3>Компьютерная диагностика</h3>
+
+                            <p>Считывание и расшифровка ошибок блоков управления</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    2 000 ₽                                </strong>
+
+                                <a href="appointment~2573ca31.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-4.jpg"
+                            alt="Ремонт тормозной системы"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Ремонт</span>
+                                <span>3 ч.</span>
+                            </div>
+
+                            <h3>Ремонт тормозной системы</h3>
+
+                            <p>Замена колодок и дисков, прокачка тормозной жидкости</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    4 500 ₽                                </strong>
+
+                                <a href="appointment~41e90687.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                                    <article class="service-card">
+                        <img
+                            src="assets/images/service-6.jpg"
+                            alt="Шиномонтаж (комплект)"
+                            onerror="this.closest('.service-card').classList.add('service-card--no-image'); this.remove();"
+                        >
+
+                        <div class="service-card__body">
+                            <div class="service-card__meta">
+                                <span>Шиномонтаж</span>
+                                <span>1 ч.</span>
+                            </div>
+
+                            <h3>Шиномонтаж (комплект)</h3>
+
+                            <p>Снятие, монтаж и балансировка четырёх колёс</p>
+
+                            <div class="service-card__bottom">
+                                <strong class="service-card__price">
+                                    2 400 ₽                                </strong>
+
+                                <a href="appointment~1f8d47d4.html" class="btn btn--light btn--small">
+                                    Выбрать
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                            </div>
+            </div>
+</section>
+
+<section class="home-benefits">
+    <div class="container">
+        <div class="section-head">
+            <span class="label">Преимущества</span>
+
+            <h2>Сайт закрывает основные процессы автомастерской</h2>
+        </div>
+
+        <div class="home-benefits__grid">
+            <article class="benefit-card">
+                <span>Запись</span>
+                <h3>Выбор даты, времени и мастера</h3>
+                <p>Клиент видит только доступные интервалы, где есть свободный специалист.</p>
+            </article>
+
+            <article class="benefit-card">
+                <span>Кабинет</span>
+                <h3>История обслуживания</h3>
+                <p>Пользователь хранит автомобили, прошлые ТО и историю начисления баллов.</p>
+            </article>
+
+            <article class="benefit-card">
+                <span>Мастер</span>
+                <h3>Ежедневник работ</h3>
+                <p>Мастер видит записи на день, меняет статусы и контролирует выполнение услуг.</p>
+            </article>
+
+            <article class="benefit-card">
+                <span>Админ</span>
+                <h3>Управление сервисом</h3>
+                <p>Администратор управляет услугами, заявками, мастерами, календарем и статистикой.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-head team__head">
+            <span class="label">Команда</span>
+
+            <h2>Мастера сервиса</h2>
+
+            <p>
+                Специалисты привязаны к услугам и рабочему графику.
+                Поэтому система не предлагает время, если мастер занят.
+            </p>
+        </div>
+
+                    <div class="team__grid">
+                                    <article class="team-card home-master-card">
+                        <div class="home-master-card__avatar">
+                            АП                        </div>
+
+                        <span>Старший механик</span>
+
+                        <h3>Александр Петров</h3>
+
+                        <p>
+                            Двигатель, ходовая, ТО                        </p>
+                    </article>
+                                    <article class="team-card home-master-card">
+                        <div class="home-master-card__avatar">
+                            ДК                        </div>
+
+                        <span>Мастер-диагност</span>
+
+                        <h3>Дмитрий Крылов</h3>
+
+                        <p>
+                            Компьютерная диагностика, электроника                        </p>
+                    </article>
+                                    <article class="team-card home-master-card">
+                        <div class="home-master-card__avatar">
+                            МВ                        </div>
+
+                        <span>Автоэлектрик</span>
+
+                        <h3>Михаил Волков</h3>
+
+                        <p>
+                            Электрооборудование, свет, стартеры                        </p>
+                    </article>
+                            </div>
+            </div>
+</section>
+
+<section class="home-process">
+    <div class="container home-process__inner">
+        <div>
+            <span class="label">Как это работает</span>
+
+            <h2>От заявки до завершенной услуги</h2>
+
+            <p>
+                Система фиксирует обращение клиента, назначает мастера,
+                показывает запись в календаре и сохраняет результат в истории обслуживания.
+            </p>
+        </div>
+
+        <div class="home-process__steps">
+            <div>
+                <span>1</span>
+                <p>Клиент выбирает услугу, автомобиль, дату и время.</p>
+            </div>
+
+            <div>
+                <span>2</span>
+                <p>Мастер получает запись в ежедневнике и меняет статус работы.</p>
+            </div>
+
+            <div>
+                <span>3</span>
+                <p>После оказания услуги клиент получает историю ТО и бонусные баллы.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="section-head faq__head">
+            <span class="label">FAQ</span>
+
+            <h2>Частые вопросы</h2>
+        </div>
+
+        <div class="faq__list">
+            <details class="faq-item">
+                <summary>Можно ли выбрать конкретного мастера?</summary>
+                <p>
+                    Да. Если несколько мастеров свободны на выбранное время,
+                    система позволит выбрать подходящего специалиста.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Почему некоторые даты не показываются?</summary>
+                <p>
+                    Дата отображается только тогда, когда на ней есть свободные мастера
+                    для выбранной услуги.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Где посмотреть прошлые обслуживания?</summary>
+                <p>
+                    История обслуживания доступна в личном кабинете клиента после входа.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Как работают бонусные баллы?</summary>
+                <p>
+                    Баллы начисляются за выполненные услуги и отображаются в шапке сайта
+                    и личном кабинете.
+                </p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section class="home-cta">
+    <div class="container home-cta__inner">
+        <div>
+            <span class="label">Онлайн-запись</span>
+
+            <h2>Выберите услугу и подходящее время</h2>
+
+            <p>
+                Форма записи автоматически учитывает длительность услуги,
+                график мастеров и уже занятые интервалы.
+            </p>
+        </div>
+
+        <a href="appointment.html" class="btn btn--orange">
+            Перейти к записи
+        </a>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/demo.js" defer></script>
+</body>
+</html>

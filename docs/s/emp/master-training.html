@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="master-schedule.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+                            <a
+                    href="master-schedule.html"
+                    class="nav__button"
+                >
+                    Ежедневник
+                </a>
+
+                <a
+                    href="master-training.html"
+                    class=" is-active"
+                >
+                    Обучение
+                </a>
+            
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+                            <a
+                    href="master-schedule.html"
+                    class="user-name"
+                >
+                    Александр Петров                </a>
+
+                <a href="../../index.html" class="header-login">Выйти</a>
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="training-page">
+    <div class="container">
+        <div class="training-hero">
+            <span class="label">Обучение мастера</span>
+
+            <h1>Правила работы с ежедневником</h1>
+
+            <p>
+                Этот раздел помогает мастеру быстро понять порядок работы с заявками,
+                статусами, переносами и завершением услуг.
+            </p>
+        </div>
+
+        <div class="training-grid">
+            <article class="training-card">
+                <span>01</span>
+                <h2>Просмотр записей</h2>
+                <p>
+                    Откройте ежедневник и выберите дату.
+                    Система покажет все записи, которые назначены на вас.
+                </p>
+                <p>
+                    В карточке записи отображаются клиент, телефон, автомобиль,
+                    услуга, время, комментарий и задача по автомобилю.
+                </p>
+            </article>
+
+            <article class="training-card">
+                <span>02</span>
+                <h2>Статус «В работе»</h2>
+                <p>
+                    Поставьте статус «В работе», когда автомобиль принят
+                    и вы начали выполнять услугу.
+                </p>
+                <p>
+                    Этот статус помогает администратору и клиенту видеть,
+                    что заявка уже обрабатывается.
+                </p>
+            </article>
+
+            <article class="training-card">
+                <span>03</span>
+                <h2>Статус «Оказана»</h2>
+                <p>
+                    Поставьте статус «Оказана» только после фактического завершения работы.
+                </p>
+                <p>
+                    После этого система начислит клиенту бонусные баллы
+                    за выполненную услугу.
+                </p>
+            </article>
+
+            <article class="training-card">
+                <span>04</span>
+                <h2>Перенос записи</h2>
+                <p>
+                    Используйте перенос, если услугу нельзя выполнить
+                    в изначально выбранное время.
+                </p>
+                <p>
+                    Перед сохранением система проверяет вашу занятость
+                    и не даст поставить запись на занятое время.
+                </p>
+            </article>
+
+            <article class="training-card">
+                <span>05</span>
+                <h2>Передача другому мастеру</h2>
+                <p>
+                    Передайте запись другому мастеру, если услуга относится
+                    к его специализации или вы не можете принять автомобиль.
+                </p>
+                <p>
+                    Система проверит, свободен ли выбранный мастер
+                    на это время.
+                </p>
+            </article>
+
+            <article class="training-card">
+                <span>06</span>
+                <h2>Отмена записи</h2>
+                <p>
+                    Используйте статус «Отменена», если клиент отказался
+                    от визита или работа больше не требуется.
+                </p>
+                <p>
+                    Отмененные записи остаются в истории и учитываются
+                    в статистике.
+                </p>
+            </article>
+        </div>
+
+        <div class="training-rules">
+            <div>
+                <span class="label">Памятка</span>
+                <h2>Короткие правила</h2>
+            </div>
+
+            <ul>
+                <li>Не ставьте «Оказана», если работа не завершена.</li>
+                <li>Перед переносом проверьте дату и время.</li>
+                <li>Не передавайте запись мастеру без причины.</li>
+                <li>Если данные клиента неполные, сообщите администратору.</li>
+                <li>Комментарий клиента нужно читать до начала работ.</li>
+            </ul>
+
+            <a href="master-schedule.html" class="btn btn--orange">
+                Перейти в ежедневник
+            </a>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/demo.js" defer></script>
+</body>
+</html>

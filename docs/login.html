@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+                            <a
+                    href="index.html"
+                    class=""
+                >
+                    Главная
+                </a>
+
+                <a href="index.html#services">Услуги</a>
+                <a href="index.html#team">Команда</a>
+                <a href="index.html#faq">FAQ</a>
+
+                <a
+                    href="appointment.html"
+                    class=""
+                >
+                    Записаться
+                </a>
+
+                                    <a
+                        href="login.html"
+                        class="mobile-auth-link is-active"
+                    >
+                        Вход
+                    </a>
+
+                    <a
+                        href="register.html"
+                        class="mobile-auth-link mobile-auth-link--register"
+                    >
+                        Регистрация
+                    </a>
+                            
+            
+                    </nav>
+
+        <div class="header-actions">
+                            <a
+                    href="login.html"
+                    class="header-login is-active"
+                >
+                    Вход
+                </a>
+
+                <a
+                    href="register.html"
+                    class="nav__button nav__button--green"
+                >
+                    Регистрация
+                </a>
+            
+            
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="form-section">
+    <div class="container">
+        <div class="form-card">
+            <span class="label">Авторизация</span>
+
+            <h1>Вход в личный кабинет</h1>
+
+            <p>
+                Войдите, чтобы смотреть свои записи, историю обслуживания,
+                статусы заказов и накопленные бонусные баллы.
+            </p>
+
+            
+            <form method="post" action="login.html" id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value=""
+                        placeholder="test1@email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль *</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Введите пароль"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn--orange">
+                    Войти
+                </button>
+
+                <p class="form-note">
+                    Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/demo.js" defer></script>
+</body>
+</html>

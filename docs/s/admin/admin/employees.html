@@ -1,0 +1,2098 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+            
+                            <a
+                    href="index.html"
+                    class="nav__button"
+                >
+                    Сводка
+                </a>
+
+                <a
+                    href="appointments.html"
+                    class=""
+                >
+                    Заявки
+                </a>
+
+                <a
+                    href="services.html"
+                    class=""
+                >
+                    Услуги
+                </a>
+
+                <a
+                    href="schedule.html"
+                    class=""
+                >
+                    Календарь
+                </a>
+
+                <a
+                    href="employees.html"
+                    class=" is-active"
+                >
+                    Мастера
+                </a>
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+            
+                            <a
+                    href="index.html"
+                    class="user-name"
+                >
+                    Администратор                </a>
+
+                <a href="../../../index.html" class="header-login">Выйти</a>
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="admin-page">
+    <div class="container">
+        <div class="admin-hero admin-hero--single">
+            <div>
+                <span class="label">Администрирование</span>
+
+                <h1>Управление мастерами</h1>
+
+                <p>
+                    Здесь администратор добавляет мастеров, назначает услуги,
+                    задает график работы и контролирует активность сотрудников.
+                </p>
+            </div>
+        </div>
+
+        
+        
+        <div class="admin-stats-grid admin-stats-grid--employees">
+            <article class="admin-stat-card">
+                <span>Найдено мастеров</span>
+                <strong>4</strong>
+                <p>по текущему фильтру</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Работают</span>
+                <strong>4</strong>
+                <p>доступны для записи</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Не работают</span>
+                <strong>0</strong>
+                <p>скрыты из расписания</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Оказано услуг</span>
+                <strong>3</strong>
+                <p>по найденным мастерам</p>
+            </article>
+        </div>
+
+        <section class="admin-section-card">
+            <details class="admin-collapsible">
+                <summary>
+                    <span>
+                        <b>Добавить мастера</b>
+                        <small>ФИО, доступ, услуги и график работы</small>
+                    </span>
+                </summary>
+
+                <form method="post" action="employees.html" class="admin-employee-form">
+                    <input type="hidden" name="action" value="create_employee">
+
+                    <div class="form-group">
+                        <label>ФИО *</label>
+                        <input type="text" name="full_name" placeholder="Александр Петров" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Должность *</label>
+                        <input type="text" name="position" placeholder="Автомеханик" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="text" name="email" placeholder="master@email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Пароль *</label>
+                        <input type="text" name="password" value="123456" minlength="6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="text" name="phone" placeholder="+7 900 000-00-00">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Табельный номер</label>
+                        <input type="text" name="employee_number" placeholder="Заполнится автоматически">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Дата приема</label>
+                        <input type="date" name="hire_date" value="2026-11-17">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Оклад, ₽</label>
+                        <input type="number" name="salary" min="0" step="1000" value="50000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Процент оплаты, %</label>
+                        <input type="number" name="commission_percent" min="0" max="100" step="0.5" value="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Статус</label>
+                        <select name="work_status">
+                            <option value="Работает">Работает</option>
+                            <option value="Не работает">Не работает</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group admin-employee-form__wide">
+                        <label>Специализация</label>
+                        <textarea name="specialization" placeholder="Диагностика, техническое обслуживание, ремонт тормозной системы"></textarea>
+                    </div>
+
+                    <div class="admin-employee-form__wide">
+                        <label>Услуги мастера</label>
+
+                        <div class="admin-service-check-grid">
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="1"
+                                        checked                                    >
+
+                                    <span>Замена моторного масла</span>
+                                </label>
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="5"
+                                        checked                                    >
+
+                                    <span>Замена свечей зажигания</span>
+                                </label>
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="3"
+                                        checked                                    >
+
+                                    <span>Диагностика двигателя</span>
+                                </label>
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="2"
+                                        checked                                    >
+
+                                    <span>Компьютерная диагностика</span>
+                                </label>
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="4"
+                                        checked                                    >
+
+                                    <span>Ремонт тормозной системы</span>
+                                </label>
+                                                            <label class="admin-check admin-check--compact">
+                                    <input
+                                        type="checkbox"
+                                        name="service_ids[]"
+                                        value="6"
+                                        checked                                    >
+
+                                    <span>Шиномонтаж (комплект)</span>
+                                </label>
+                                                    </div>
+                    </div>
+
+                    <div class="admin-employee-form__wide">
+                        <label>График работы</label>
+
+                        <div class="admin-schedule-editor">
+                            <div class="admin-schedule-labels">
+                                <span>День</span>
+                                <span>Статус</span>
+                                <span>Начало работы</span>
+                                <span>Конец работы</span>
+                                <span>Начало перерыва</span>
+                                <span>Конец перерыва</span>
+                            </div>
+
+                                                            <div class="admin-schedule-row">
+                                    <strong>Пн</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[1][is_working]"
+                                            checked                                        >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[1][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[1][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[1][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[1][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Вт</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[2][is_working]"
+                                            checked                                        >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[2][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[2][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[2][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[2][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Ср</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[3][is_working]"
+                                            checked                                        >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[3][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[3][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[3][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[3][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Чт</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[4][is_working]"
+                                            checked                                        >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[4][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[4][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[4][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[4][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Пт</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[5][is_working]"
+                                            checked                                        >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[5][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[5][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[5][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[5][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Сб</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[6][is_working]"
+                                                                                    >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[6][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[6][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[6][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[6][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                            <div class="admin-schedule-row">
+                                    <strong>Вс</strong>
+
+                                    <label class="admin-check admin-check--mini">
+                                        <input
+                                            type="checkbox"
+                                            name="schedule[7][is_working]"
+                                                                                    >
+                                        <span>Работает</span>
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        name="schedule[7][start_time]"
+                                        value="08:30"
+                                        aria-label="Начало работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[7][end_time]"
+                                        value="21:00"
+                                        aria-label="Конец работы"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[7][break_start]"
+                                        value="13:00"
+                                        aria-label="Начало перерыва"
+                                    >
+
+                                    <input
+                                        type="time"
+                                        name="schedule[7][break_end]"
+                                        value="14:00"
+                                        aria-label="Конец перерыва"
+                                    >
+                                </div>
+                                                    </div>
+                    </div>
+
+                    <button type="submit" class="btn btn--orange">
+                        Добавить мастера
+                    </button>
+                </form>
+            </details>
+        </section>
+
+        <section class="admin-section-card">
+            <div class="admin-section-head admin-section-head--compact">
+                <div>
+                    <span class="label">Сотрудники</span>
+                    <h2>Список мастеров</h2>
+                </div>
+
+                <strong class="admin-count">
+                    4 шт.
+                </strong>
+            </div>
+
+            <form method="get" action="employees.html" class="admin-list-filter admin-list-filter--employees">
+                <div class="form-group">
+                    <label for="search">Поиск</label>
+                    <input
+                        type="text"
+                        id="search"
+                        name="search"
+                        value=""
+                        placeholder="ФИО, должность, email, телефон"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Статус</label>
+                    <select id="status" name="status">
+                        <option value="">Все</option>
+                        <option value="active" >Работают</option>
+                        <option value="inactive" >Не работают</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="service_id">Услуга</label>
+                    <select id="service_id" name="service_id">
+                        <option value="0">Все услуги</option>
+
+                                                    <option
+                                value="1"
+                                                            >
+                                Замена моторного масла                            </option>
+                                                    <option
+                                value="5"
+                                                            >
+                                Замена свечей зажигания                            </option>
+                                                    <option
+                                value="3"
+                                                            >
+                                Диагностика двигателя                            </option>
+                                                    <option
+                                value="2"
+                                                            >
+                                Компьютерная диагностика                            </option>
+                                                    <option
+                                value="4"
+                                                            >
+                                Ремонт тормозной системы                            </option>
+                                                    <option
+                                value="6"
+                                                            >
+                                Шиномонтаж (комплект)                            </option>
+                                            </select>
+                </div>
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Найти
+                </button>
+
+                <a href="employees.html" class="btn btn--light btn--small">
+                    Сбросить
+                </a>
+            </form>
+
+                            <div class="admin-employees-list">
+                                            
+                        <article class="admin-employee-card ">
+                            <div class="admin-employee-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Старший механик                                    </span>
+
+                                    <h3>Александр Петров</h3>
+
+                                    <p>Двигатель, ходовая, ТО</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Работает                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Email</span>
+                                    <strong>user@automaster.local</strong>
+                                </div>
+
+                                <div>
+                                    <span>Телефон</span>
+                                    <strong>+7 900 000-00-01</strong>
+                                </div>
+
+                                <div>
+                                    <span>Табельный</span>
+                                    <strong>EMP001</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оклад</span>
+                                    <strong>60 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Процент</span>
+                                    <strong>30%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Услуги</span>
+                                    <strong>6</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>8</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оказано</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Доход</span>
+                                    <strong>1 890 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Принят</span>
+                                    <strong>10.01.2024</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-employee-actions">
+                                    <form method="post" action="employees.html" class="admin-employee-edit-form">
+                                        <input type="hidden" name="action" value="update_employee">
+                                        <input type="hidden" name="employee_id" value="1">
+
+                                        <div class="form-group">
+                                            <label>ФИО *</label>
+                                            <input type="text" name="full_name" value="Александр Петров" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Должность *</label>
+                                            <input type="text" name="position" value="Старший механик" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="text" name="email" value="user@automaster.local" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Новый пароль</label>
+                                            <input type="text" name="new_password" placeholder="Оставьте пустым">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Телефон</label>
+                                            <input type="text" name="phone" value="+7 900 000-00-01">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Табельный номер</label>
+                                            <input type="text" name="employee_number" value="EMP001" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Дата приема</label>
+                                            <input type="date" name="hire_date" value="2024-01-10">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Оклад, ₽</label>
+                                            <input type="number" name="salary" min="0" step="1000" value="60000.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Процент, %</label>
+                                            <input type="number" name="commission_percent" min="0" max="100" step="0.5" value="30.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Статус</label>
+                                            <select name="work_status">
+                                                <option value="Работает" selected>Работает</option>
+                                                <option value="Не работает" >Не работает</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group admin-employee-form__wide">
+                                            <label>Специализация</label>
+                                            <textarea name="specialization">Двигатель, ходовая, ТО</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить данные
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-services-form">
+                                        <input type="hidden" name="action" value="update_services">
+                                        <input type="hidden" name="employee_id" value="1">
+
+                                        <h4>Услуги мастера</h4>
+
+                                        <div class="admin-service-check-grid">
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="1"
+                                                        checked                                                    >
+
+                                                    <span>Замена моторного масла</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="5"
+                                                        checked                                                    >
+
+                                                    <span>Замена свечей зажигания</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="3"
+                                                        checked                                                    >
+
+                                                    <span>Диагностика двигателя</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="2"
+                                                        checked                                                    >
+
+                                                    <span>Компьютерная диагностика</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="4"
+                                                        checked                                                    >
+
+                                                    <span>Ремонт тормозной системы</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="6"
+                                                        checked                                                    >
+
+                                                    <span>Шиномонтаж (комплект)</span>
+                                                </label>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить услуги
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-schedule-form">
+                                        <input type="hidden" name="action" value="update_schedule">
+                                        <input type="hidden" name="employee_id" value="1">
+
+                                        <h4>График работы</h4>
+
+                                        <div class="admin-schedule-editor">
+                                            <div class="admin-schedule-labels">
+                                                <span>День</span>
+                                                <span>Статус</span>
+                                                <span>Начало работы</span>
+                                                <span>Конец работы</span>
+                                                <span>Начало перерыва</span>
+                                                <span>Конец перерыва</span>
+                                            </div>
+
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пн</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[1][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[1][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[1][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[1][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[1][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[2][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[2][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[2][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[2][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[2][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Ср</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[3][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[3][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[3][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[3][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[3][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Чт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[4][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[4][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[4][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[4][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[4][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[5][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[5][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[5][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[5][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[5][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Сб</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[6][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[6][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[6][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[6][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[6][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вс</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[7][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[7][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[7][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[7][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[7][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить график
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-toggle-form">
+                                        <input type="hidden" name="action" value="toggle_employee">
+                                        <input type="hidden" name="employee_id" value="1">
+                                        <input type="hidden" name="work_status" value="Не работает">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Отключить мастера                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-employee-card ">
+                            <div class="admin-employee-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Мастер-диагност                                    </span>
+
+                                    <h3>Дмитрий Крылов</h3>
+
+                                    <p>Компьютерная диагностика, электроника</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Работает                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Email</span>
+                                    <strong>krylov@automaster.local</strong>
+                                </div>
+
+                                <div>
+                                    <span>Телефон</span>
+                                    <strong>+7 900 000-00-03</strong>
+                                </div>
+
+                                <div>
+                                    <span>Табельный</span>
+                                    <strong>EMP002</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оклад</span>
+                                    <strong>58 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Процент</span>
+                                    <strong>30%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Услуги</span>
+                                    <strong>4</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>5</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оказано</span>
+                                    <strong>1</strong>
+                                </div>
+
+                                <div>
+                                    <span>Доход</span>
+                                    <strong>600 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Принят</span>
+                                    <strong>15.03.2024</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-employee-actions">
+                                    <form method="post" action="employees.html" class="admin-employee-edit-form">
+                                        <input type="hidden" name="action" value="update_employee">
+                                        <input type="hidden" name="employee_id" value="3">
+
+                                        <div class="form-group">
+                                            <label>ФИО *</label>
+                                            <input type="text" name="full_name" value="Дмитрий Крылов" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Должность *</label>
+                                            <input type="text" name="position" value="Мастер-диагност" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="text" name="email" value="krylov@automaster.local" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Новый пароль</label>
+                                            <input type="text" name="new_password" placeholder="Оставьте пустым">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Телефон</label>
+                                            <input type="text" name="phone" value="+7 900 000-00-03">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Табельный номер</label>
+                                            <input type="text" name="employee_number" value="EMP002" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Дата приема</label>
+                                            <input type="date" name="hire_date" value="2024-03-15">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Оклад, ₽</label>
+                                            <input type="number" name="salary" min="0" step="1000" value="58000.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Процент, %</label>
+                                            <input type="number" name="commission_percent" min="0" max="100" step="0.5" value="30.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Статус</label>
+                                            <select name="work_status">
+                                                <option value="Работает" selected>Работает</option>
+                                                <option value="Не работает" >Не работает</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group admin-employee-form__wide">
+                                            <label>Специализация</label>
+                                            <textarea name="specialization">Компьютерная диагностика, электроника</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить данные
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-services-form">
+                                        <input type="hidden" name="action" value="update_services">
+                                        <input type="hidden" name="employee_id" value="3">
+
+                                        <h4>Услуги мастера</h4>
+
+                                        <div class="admin-service-check-grid">
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="1"
+                                                        checked                                                    >
+
+                                                    <span>Замена моторного масла</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="5"
+                                                        checked                                                    >
+
+                                                    <span>Замена свечей зажигания</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="3"
+                                                        checked                                                    >
+
+                                                    <span>Диагностика двигателя</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="2"
+                                                        checked                                                    >
+
+                                                    <span>Компьютерная диагностика</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="4"
+                                                                                                            >
+
+                                                    <span>Ремонт тормозной системы</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="6"
+                                                                                                            >
+
+                                                    <span>Шиномонтаж (комплект)</span>
+                                                </label>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить услуги
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-schedule-form">
+                                        <input type="hidden" name="action" value="update_schedule">
+                                        <input type="hidden" name="employee_id" value="3">
+
+                                        <h4>График работы</h4>
+
+                                        <div class="admin-schedule-editor">
+                                            <div class="admin-schedule-labels">
+                                                <span>День</span>
+                                                <span>Статус</span>
+                                                <span>Начало работы</span>
+                                                <span>Конец работы</span>
+                                                <span>Начало перерыва</span>
+                                                <span>Конец перерыва</span>
+                                            </div>
+
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пн</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[1][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[1][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[1][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[1][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[1][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[2][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[2][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[2][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[2][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[2][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Ср</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[3][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[3][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[3][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[3][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[3][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Чт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[4][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[4][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[4][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[4][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[4][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[5][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[5][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[5][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[5][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[5][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Сб</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[6][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[6][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[6][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[6][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[6][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вс</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[7][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[7][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[7][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[7][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[7][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить график
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-toggle-form">
+                                        <input type="hidden" name="action" value="toggle_employee">
+                                        <input type="hidden" name="employee_id" value="3">
+                                        <input type="hidden" name="work_status" value="Не работает">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Отключить мастера                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-employee-card ">
+                            <div class="admin-employee-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Автоэлектрик                                    </span>
+
+                                    <h3>Михаил Волков</h3>
+
+                                    <p>Электрооборудование, свет, стартеры</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Работает                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Email</span>
+                                    <strong>volkov@automaster.local</strong>
+                                </div>
+
+                                <div>
+                                    <span>Телефон</span>
+                                    <strong>+7 900 000-00-04</strong>
+                                </div>
+
+                                <div>
+                                    <span>Табельный</span>
+                                    <strong>EMP003</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оклад</span>
+                                    <strong>55 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Процент</span>
+                                    <strong>30%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Услуги</span>
+                                    <strong>4</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оказано</span>
+                                    <strong>0</strong>
+                                </div>
+
+                                <div>
+                                    <span>Доход</span>
+                                    <strong>0 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Принят</span>
+                                    <strong>01.06.2024</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-employee-actions">
+                                    <form method="post" action="employees.html" class="admin-employee-edit-form">
+                                        <input type="hidden" name="action" value="update_employee">
+                                        <input type="hidden" name="employee_id" value="4">
+
+                                        <div class="form-group">
+                                            <label>ФИО *</label>
+                                            <input type="text" name="full_name" value="Михаил Волков" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Должность *</label>
+                                            <input type="text" name="position" value="Автоэлектрик" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="text" name="email" value="volkov@automaster.local" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Новый пароль</label>
+                                            <input type="text" name="new_password" placeholder="Оставьте пустым">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Телефон</label>
+                                            <input type="text" name="phone" value="+7 900 000-00-04">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Табельный номер</label>
+                                            <input type="text" name="employee_number" value="EMP003" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Дата приема</label>
+                                            <input type="date" name="hire_date" value="2024-06-01">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Оклад, ₽</label>
+                                            <input type="number" name="salary" min="0" step="1000" value="55000.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Процент, %</label>
+                                            <input type="number" name="commission_percent" min="0" max="100" step="0.5" value="30.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Статус</label>
+                                            <select name="work_status">
+                                                <option value="Работает" selected>Работает</option>
+                                                <option value="Не работает" >Не работает</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group admin-employee-form__wide">
+                                            <label>Специализация</label>
+                                            <textarea name="specialization">Электрооборудование, свет, стартеры</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить данные
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-services-form">
+                                        <input type="hidden" name="action" value="update_services">
+                                        <input type="hidden" name="employee_id" value="4">
+
+                                        <h4>Услуги мастера</h4>
+
+                                        <div class="admin-service-check-grid">
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="1"
+                                                                                                            >
+
+                                                    <span>Замена моторного масла</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="5"
+                                                        checked                                                    >
+
+                                                    <span>Замена свечей зажигания</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="3"
+                                                        checked                                                    >
+
+                                                    <span>Диагностика двигателя</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="2"
+                                                        checked                                                    >
+
+                                                    <span>Компьютерная диагностика</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="4"
+                                                        checked                                                    >
+
+                                                    <span>Ремонт тормозной системы</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="6"
+                                                                                                            >
+
+                                                    <span>Шиномонтаж (комплект)</span>
+                                                </label>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить услуги
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-schedule-form">
+                                        <input type="hidden" name="action" value="update_schedule">
+                                        <input type="hidden" name="employee_id" value="4">
+
+                                        <h4>График работы</h4>
+
+                                        <div class="admin-schedule-editor">
+                                            <div class="admin-schedule-labels">
+                                                <span>День</span>
+                                                <span>Статус</span>
+                                                <span>Начало работы</span>
+                                                <span>Конец работы</span>
+                                                <span>Начало перерыва</span>
+                                                <span>Конец перерыва</span>
+                                            </div>
+
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пн</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[1][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[1][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[1][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[1][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[1][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[2][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[2][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[2][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[2][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[2][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Ср</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[3][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[3][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[3][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[3][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[3][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Чт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[4][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[4][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[4][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[4][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[4][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[5][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[5][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[5][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[5][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[5][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Сб</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[6][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[6][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[6][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[6][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[6][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вс</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[7][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[7][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[7][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[7][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[7][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить график
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-toggle-form">
+                                        <input type="hidden" name="action" value="toggle_employee">
+                                        <input type="hidden" name="employee_id" value="4">
+                                        <input type="hidden" name="work_status" value="Не работает">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Отключить мастера                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-employee-card ">
+                            <div class="admin-employee-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Шиномонтажник                                    </span>
+
+                                    <h3>Сергей Ким</h3>
+
+                                    <p>Шиномонтаж, балансировка</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Работает                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Email</span>
+                                    <strong>kim@automaster.local</strong>
+                                </div>
+
+                                <div>
+                                    <span>Телефон</span>
+                                    <strong>+7 900 000-00-05</strong>
+                                </div>
+
+                                <div>
+                                    <span>Табельный</span>
+                                    <strong>EMP004</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оклад</span>
+                                    <strong>48 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Процент</span>
+                                    <strong>25%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Услуги</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>3</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оказано</span>
+                                    <strong>0</strong>
+                                </div>
+
+                                <div>
+                                    <span>Доход</span>
+                                    <strong>0 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Принят</span>
+                                    <strong>10.02.2025</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-employee-actions">
+                                    <form method="post" action="employees.html" class="admin-employee-edit-form">
+                                        <input type="hidden" name="action" value="update_employee">
+                                        <input type="hidden" name="employee_id" value="5">
+
+                                        <div class="form-group">
+                                            <label>ФИО *</label>
+                                            <input type="text" name="full_name" value="Сергей Ким" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Должность *</label>
+                                            <input type="text" name="position" value="Шиномонтажник" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <input type="text" name="email" value="kim@automaster.local" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Новый пароль</label>
+                                            <input type="text" name="new_password" placeholder="Оставьте пустым">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Телефон</label>
+                                            <input type="text" name="phone" value="+7 900 000-00-05">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Табельный номер</label>
+                                            <input type="text" name="employee_number" value="EMP004" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Дата приема</label>
+                                            <input type="date" name="hire_date" value="2025-02-10">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Оклад, ₽</label>
+                                            <input type="number" name="salary" min="0" step="1000" value="48000.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Процент, %</label>
+                                            <input type="number" name="commission_percent" min="0" max="100" step="0.5" value="25.00">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Статус</label>
+                                            <select name="work_status">
+                                                <option value="Работает" selected>Работает</option>
+                                                <option value="Не работает" >Не работает</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group admin-employee-form__wide">
+                                            <label>Специализация</label>
+                                            <textarea name="specialization">Шиномонтаж, балансировка</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить данные
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-services-form">
+                                        <input type="hidden" name="action" value="update_services">
+                                        <input type="hidden" name="employee_id" value="5">
+
+                                        <h4>Услуги мастера</h4>
+
+                                        <div class="admin-service-check-grid">
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="1"
+                                                        checked                                                    >
+
+                                                    <span>Замена моторного масла</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="5"
+                                                                                                            >
+
+                                                    <span>Замена свечей зажигания</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="3"
+                                                                                                            >
+
+                                                    <span>Диагностика двигателя</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="2"
+                                                                                                            >
+
+                                                    <span>Компьютерная диагностика</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="4"
+                                                                                                            >
+
+                                                    <span>Ремонт тормозной системы</span>
+                                                </label>
+                                                                                            <label class="admin-check admin-check--compact">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="service_ids[]"
+                                                        value="6"
+                                                        checked                                                    >
+
+                                                    <span>Шиномонтаж (комплект)</span>
+                                                </label>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить услуги
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-schedule-form">
+                                        <input type="hidden" name="action" value="update_schedule">
+                                        <input type="hidden" name="employee_id" value="5">
+
+                                        <h4>График работы</h4>
+
+                                        <div class="admin-schedule-editor">
+                                            <div class="admin-schedule-labels">
+                                                <span>День</span>
+                                                <span>Статус</span>
+                                                <span>Начало работы</span>
+                                                <span>Конец работы</span>
+                                                <span>Начало перерыва</span>
+                                                <span>Конец перерыва</span>
+                                            </div>
+
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пн</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[1][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[1][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[1][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[1][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[1][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[2][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[2][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[2][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[2][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[2][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Ср</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[3][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[3][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[3][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[3][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[3][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Чт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[4][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[4][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[4][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[4][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[4][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Пт</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[5][is_working]"
+                                                            checked                                                        >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[5][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[5][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[5][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[5][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Сб</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[6][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[6][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[6][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[6][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[6][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                            
+                                                <div class="admin-schedule-row">
+                                                    <strong>Вс</strong>
+
+                                                    <label class="admin-check admin-check--mini">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="schedule[7][is_working]"
+                                                                                                                    >
+                                                        <span>Работает</span>
+                                                    </label>
+
+                                                    <input type="time" name="schedule[7][start_time]" value="09:00" aria-label="Начало работы">
+                                                    <input type="time" name="schedule[7][end_time]" value="18:00" aria-label="Конец работы">
+                                                    <input type="time" name="schedule[7][break_start]" value="13:00" aria-label="Начало перерыва">
+                                                    <input type="time" name="schedule[7][break_end]" value="14:00" aria-label="Конец перерыва">
+                                                </div>
+                                                                                    </div>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Сохранить график
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="employees.html" class="admin-employee-toggle-form">
+                                        <input type="hidden" name="action" value="toggle_employee">
+                                        <input type="hidden" name="employee_id" value="5">
+                                        <input type="hidden" name="work_status" value="Не работает">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Отключить мастера                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                    </div>
+                    </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../assets/js/script.js"></script>
+<script src="../../../assets/js/demo.js" defer></script>
+</body>
+</html>

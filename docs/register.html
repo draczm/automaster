@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+                            <a
+                    href="index.html"
+                    class=""
+                >
+                    Главная
+                </a>
+
+                <a href="index.html#services">Услуги</a>
+                <a href="index.html#team">Команда</a>
+                <a href="index.html#faq">FAQ</a>
+
+                <a
+                    href="appointment.html"
+                    class=""
+                >
+                    Записаться
+                </a>
+
+                                    <a
+                        href="login.html"
+                        class="mobile-auth-link"
+                    >
+                        Вход
+                    </a>
+
+                    <a
+                        href="register.html"
+                        class="mobile-auth-link mobile-auth-link--register is-active"
+                    >
+                        Регистрация
+                    </a>
+                            
+            
+                    </nav>
+
+        <div class="header-actions">
+                            <a
+                    href="login.html"
+                    class="header-login"
+                >
+                    Вход
+                </a>
+
+                <a
+                    href="register.html"
+                    class="nav__button nav__button--green is-active"
+                >
+                    Регистрация
+                </a>
+            
+            
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="form-section">
+    <div class="container">
+        <div class="form-card">
+            <span class="label">Регистрация</span>
+
+            <h1>Создание личного кабинета</h1>
+
+            <p>
+                Зарегистрируйтесь, чтобы записываться на услуги, смотреть историю
+                обслуживания и получать бонусные баллы.
+            </p>
+
+            
+            <form method="post" action="register.html" id="registerForm" novalidate>
+                <div class="form-group">
+                    <label for="full_name">ФИО *</label>
+                    <input
+                        type="text"
+                        id="full_name"
+                        name="full_name"
+                        value=""
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            value=""
+                            placeholder="+7 927 000-00-00"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value=""
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Адрес</label>
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value=""
+                        placeholder="г. Йошкар-Ола"
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Пароль *</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            minlength="6"
+                            required
+                        >
+                        <small class="input-hint">Минимум 6 символов.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_repeat">Повтор пароля *</label>
+                        <input
+                            type="password"
+                            id="password_repeat"
+                            name="password_repeat"
+                            minlength="6"
+                            required
+                        >
+                        <small class="input-hint">Повторите пароль без ошибок.</small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--orange">Зарегистрироваться</button>
+
+                <p class="form-note">
+                    Уже есть аккаунт? <a href="login.html">Войти</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/demo.js" defer></script>
+</body>
+</html>

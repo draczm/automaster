@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+            
+                            <a
+                    href="index.html"
+                    class="nav__button"
+                >
+                    Сводка
+                </a>
+
+                <a
+                    href="appointments.html"
+                    class=""
+                >
+                    Заявки
+                </a>
+
+                <a
+                    href="services.html"
+                    class=""
+                >
+                    Услуги
+                </a>
+
+                <a
+                    href="schedule.html"
+                    class=" is-active"
+                >
+                    Календарь
+                </a>
+
+                <a
+                    href="employees.html"
+                    class=""
+                >
+                    Мастера
+                </a>
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+            
+                            <a
+                    href="index.html"
+                    class="user-name"
+                >
+                    Администратор                </a>
+
+                <a href="../../../index.html" class="header-login">Выйти</a>
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="admin-page">
+    <div class="container">
+        <div class="admin-hero admin-hero--single">
+            <div>
+                <span class="label">Администрирование</span>
+
+                <h1>Календарь записей</h1>
+
+                <p>
+                    Недельное расписание автомастерской с понедельника по пятницу.
+                    Рабочее время: с 08:30 до 21:00.
+                </p>
+            </div>
+        </div>
+
+        <div class="admin-stats-grid admin-stats-grid--calendar">
+            <article class="admin-stat-card">
+                <span>Неделя</span>
+                <strong>02.11–06.11</strong>
+                <p>2026 год</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Всего записей</span>
+                <strong>0</strong>
+                <p>по текущей неделе</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Активные</span>
+                <strong>0</strong>
+                <p>новые, подтвержденные, в работе</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Завершено</span>
+                <strong>0</strong>
+                <p>0 отменено</p>
+            </article>
+        </div>
+
+        <section class="admin-section-card admin-calendar-toolbar">
+            <div class="admin-calendar-nav">
+                <a
+                    href="schedule.html"
+                    class="btn btn--light btn--small"
+                >
+                    ← Прошлая неделя
+                </a>
+
+                <a
+                    href="schedule~779ac922.html"
+                    class="btn btn--orange btn--small"
+                >
+                    Текущая неделя
+                </a>
+
+                <a
+                    href="schedule~b8005f96.html"
+                    class="btn btn--light btn--small"
+                >
+                    Следующая неделя →
+                </a>
+            </div>
+
+            <form method="get" action="schedule.html" class="admin-calendar-filter">
+                <input type="hidden" name="week" value="2026-11-02">
+
+                <div class="form-group">
+                    <label for="master_id">Мастер</label>
+
+                    <select id="master_id" name="master_id">
+                        <option value="0">Все мастера</option>
+
+                                                    <option
+                                value="1"
+                                                            >
+                                Александр Петров                                — Старший механик                            </option>
+                                                    <option
+                                value="3"
+                                                            >
+                                Дмитрий Крылов                                — Мастер-диагност                            </option>
+                                                    <option
+                                value="4"
+                                                            >
+                                Михаил Волков                                — Автоэлектрик                            </option>
+                                                    <option
+                                value="5"
+                                                            >
+                                Сергей Ким                                — Шиномонтажник                            </option>
+                                            </select>
+                </div>
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Показать
+                </button>
+            </form>
+        </section>
+
+        <section class="admin-section-card admin-calendar-section">
+            <div class="admin-section-head">
+                <div>
+                    <span class="label">Расписание</span>
+                    <h2>Пн–Пт, 02.11.2026 — 06.11.2026</h2>
+                </div>
+            </div>
+
+            <div class="admin-calendar-legend">
+                <span><i class="legend-dot legend-dot--new"></i>Новая</span>
+                <span><i class="legend-dot legend-dot--confirmed"></i>Подтверждена</span>
+                <span><i class="legend-dot legend-dot--work"></i>В работе</span>
+                <span><i class="legend-dot legend-dot--done"></i>Оказана</span>
+                <span><i class="legend-dot legend-dot--moved"></i>Перенесена</span>
+                <span><i class="legend-dot legend-dot--cancel"></i>Отменена</span>
+            </div>
+
+            <div class="admin-calendar-scroll">
+                <div class="admin-calendar-grid">
+                    <div class="admin-calendar-corner">
+                        Время
+                    </div>
+
+                                            <div class="admin-calendar-day-head ">
+                            <strong>Понедельник</strong>
+                            <span>02.11.2026</span>
+                        </div>
+                                            <div class="admin-calendar-day-head ">
+                            <strong>Вторник</strong>
+                            <span>03.11.2026</span>
+                        </div>
+                                            <div class="admin-calendar-day-head ">
+                            <strong>Среда</strong>
+                            <span>04.11.2026</span>
+                        </div>
+                                            <div class="admin-calendar-day-head ">
+                            <strong>Четверг</strong>
+                            <span>05.11.2026</span>
+                        </div>
+                                            <div class="admin-calendar-day-head ">
+                            <strong>Пятница</strong>
+                            <span>06.11.2026</span>
+                        </div>
+                    
+                    <div
+                        class="admin-calendar-time-column"
+                        style="height: 1450px;"
+                    >
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 0px;"
+                            >
+                                08:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 58px;"
+                            >
+                                09:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 116px;"
+                            >
+                                09:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 174px;"
+                            >
+                                10:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 232px;"
+                            >
+                                10:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 290px;"
+                            >
+                                11:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 348px;"
+                            >
+                                11:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 406px;"
+                            >
+                                12:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 464px;"
+                            >
+                                12:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 522px;"
+                            >
+                                13:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 580px;"
+                            >
+                                13:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 638px;"
+                            >
+                                14:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 696px;"
+                            >
+                                14:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 754px;"
+                            >
+                                15:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 812px;"
+                            >
+                                15:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 870px;"
+                            >
+                                16:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 928px;"
+                            >
+                                16:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 986px;"
+                            >
+                                17:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1044px;"
+                            >
+                                17:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1102px;"
+                            >
+                                18:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1160px;"
+                            >
+                                18:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1218px;"
+                            >
+                                19:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1276px;"
+                            >
+                                19:30                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1334px;"
+                            >
+                                20:00                            </div>
+                                                    <div
+                                class="admin-calendar-time"
+                                style="top: 1392px;"
+                            >
+                                20:30                            </div>
+                                            </div>
+
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1450px;"
+                        >
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 0px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 58px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 116px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 174px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 232px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 290px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 348px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 406px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 464px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 522px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 580px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 638px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 696px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 754px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 812px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 870px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 928px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 986px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1044px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1102px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1160px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1218px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1276px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1334px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1392px;"
+                                ></div>
+                            
+                                                            <div class="admin-calendar-empty-day">
+                                    Записей нет
+                                </div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1450px;"
+                        >
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 0px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 58px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 116px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 174px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 232px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 290px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 348px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 406px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 464px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 522px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 580px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 638px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 696px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 754px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 812px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 870px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 928px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 986px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1044px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1102px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1160px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1218px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1276px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1334px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1392px;"
+                                ></div>
+                            
+                                                            <div class="admin-calendar-empty-day">
+                                    Записей нет
+                                </div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1450px;"
+                        >
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 0px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 58px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 116px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 174px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 232px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 290px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 348px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 406px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 464px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 522px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 580px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 638px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 696px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 754px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 812px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 870px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 928px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 986px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1044px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1102px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1160px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1218px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1276px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1334px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1392px;"
+                                ></div>
+                            
+                                                            <div class="admin-calendar-empty-day">
+                                    Записей нет
+                                </div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1450px;"
+                        >
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 0px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 58px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 116px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 174px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 232px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 290px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 348px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 406px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 464px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 522px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 580px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 638px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 696px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 754px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 812px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 870px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 928px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 986px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1044px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1102px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1160px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1218px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1276px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1334px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1392px;"
+                                ></div>
+                            
+                                                            <div class="admin-calendar-empty-day">
+                                    Записей нет
+                                </div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1450px;"
+                        >
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 0px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 58px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 116px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 174px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 232px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 290px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 348px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 406px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 464px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 522px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 580px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 638px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 696px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 754px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 812px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 870px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 928px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 986px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1044px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1102px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1160px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1218px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1276px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1334px;"
+                                ></div>
+                                                            <div
+                                    class="admin-calendar-line"
+                                    style="top: 1392px;"
+                                ></div>
+                            
+                                                            <div class="admin-calendar-empty-day">
+                                    Записей нет
+                                </div>
+                            
+                                                    </div>
+                                    </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../assets/js/script.js"></script>
+<script src="../../../assets/js/demo.js" defer></script>
+</body>
+</html>

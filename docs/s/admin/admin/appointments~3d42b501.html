@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+            
+                            <a
+                    href="index.html"
+                    class="nav__button"
+                >
+                    Сводка
+                </a>
+
+                <a
+                    href="appointments.html"
+                    class=" is-active"
+                >
+                    Заявки
+                </a>
+
+                <a
+                    href="services.html"
+                    class=""
+                >
+                    Услуги
+                </a>
+
+                <a
+                    href="schedule.html"
+                    class=""
+                >
+                    Календарь
+                </a>
+
+                <a
+                    href="employees.html"
+                    class=""
+                >
+                    Мастера
+                </a>
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+            
+                            <a
+                    href="index.html"
+                    class="user-name"
+                >
+                    Администратор                </a>
+
+                <a href="../../../index.html" class="header-login">Выйти</a>
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="admin-page">
+    <div class="container">
+        <div class="admin-hero">
+            <div>
+                <span class="label">Администрирование</span>
+
+                <h1>Управление заявками</h1>
+
+                <p>
+                    Администратор видит все записи, меняет статусы,
+                    переносит заявки и назначает мастеров.
+                </p>
+            </div>
+
+            <div class="admin-hero__actions">
+                <a href="index.html" class="btn btn--light">Сводка</a>
+                <a href="../../../appointment.html" class="btn btn--orange">Новая запись</a>
+            </div>
+        </div>
+
+        
+        
+        <section class="admin-section-card">
+            <form method="get" action="appointments.html" class="admin-filter-form">
+                <div class="form-group">
+                    <label for="status">Статус</label>
+
+                    <select id="status" name="status">
+                        <option value="">Все статусы</option>
+                                                    <option value="Новая" >
+                                Новая                            </option>
+                                                    <option value="Подтверждена" >
+                                Подтверждена                            </option>
+                                                    <option value="В работе" >
+                                В работе                            </option>
+                                                    <option value="Оказана" >
+                                Оказана                            </option>
+                                                    <option value="Перенесена" >
+                                Перенесена                            </option>
+                                                    <option value="Отменена" >
+                                Отменена                            </option>
+                                            </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Дата</label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value=""
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="search">Поиск</label>
+
+                    <input
+                        type="text"
+                        id="search"
+                        name="search"
+                        value="+7 900 555-55-55"
+                        placeholder="Клиент, телефон, авто, номер"
+                    >
+                </div>
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Найти
+                </button>
+
+                <a href="appointments.html" class="btn btn--light btn--small">
+                    Сбросить
+                </a>
+            </form>
+        </section>
+
+        <section class="admin-section-card">
+            <div class="admin-section-head">
+                <div>
+                    <span class="label">Заявки</span>
+                    <h2>Список записей</h2>
+                </div>
+
+                <strong class="admin-count">
+                    3 шт.
+                </strong>
+            </div>
+
+                            <div class="admin-appointment-list">
+                                            
+                        <article class="admin-appointment-card">
+                            <div class="admin-appointment-card__top">
+                                <div>
+                                    <span class="admin-card-time">
+                                        24.11.2026 10:00                                    </span>
+
+                                    <h3>Диагностика двигателя</h3>
+
+                                    <p>
+                                        Андрей Васильев                                        ·
+                                        +7 900 555-55-55                                    </p>
+                                </div>
+
+                                <span class="status-badge status-badge--new">
+                                    Новая                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Автомобиль</span>
+                                    <strong>
+                                        Hyundai                                        Solaris                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span>Госномер</span>
+                                    <strong>М555ММ77</strong>
+                                </div>
+
+                                <div>
+                                    <span>Мастер</span>
+                                    <strong>Александр Петров</strong>
+                                </div>
+
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>2 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оплата</span>
+                                    <strong>Не оплачено</strong>
+                                </div>
+
+                                <div>
+                                    <span>Создано</span>
+                                    <strong>17.11.2026 15:00</strong>
+                                </div>
+                            </div>
+
+                                                            <p class="record-card__comment">
+                                    Диагностика двигателя                                </p>
+                            
+                            
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-actions-grid">
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="change_status">
+                                        <input type="hidden" name="appointment_id" value="17">
+
+                                        <label>Статус</label>
+
+                                        <select name="status">
+                                                                                            <option value="Новая" selected>
+                                                    Новая                                                </option>
+                                                                                            <option value="Подтверждена" >
+                                                    Подтверждена                                                </option>
+                                                                                            <option value="В работе" >
+                                                    В работе                                                </option>
+                                                                                            <option value="Оказана" >
+                                                    Оказана                                                </option>
+                                                                                            <option value="Перенесена" >
+                                                    Перенесена                                                </option>
+                                                                                            <option value="Отменена" >
+                                                    Отменена                                                </option>
+                                                                                    </select>
+
+                                        <input
+                                            type="text"
+                                            name="cancel_reason"
+                                            placeholder="Причина отмены, если нужна"
+                                        >
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить статус
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="move_appointment">
+                                        <input type="hidden" name="appointment_id" value="17">
+
+                                        <label>Перенос</label>
+
+                                        <input
+                                            type="date"
+                                            name="new_date"
+                                            value="2026-11-24"
+                                            min="2026-11-17"
+                                        >
+
+                                        <input
+                                            type="time"
+                                            name="new_time"
+                                            value="10:00"
+                                        >
+
+                                        <select name="new_employee_id">
+                                            <option value="">Текущий мастер</option>
+
+                                                                                            <option value="1" selected>
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" >
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Перенести
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="assign_master">
+                                        <input type="hidden" name="appointment_id" value="17">
+
+                                        <label>Назначить мастера</label>
+
+                                        <select name="new_employee_id" required>
+                                            <option value="">Выберите мастера</option>
+
+                                                                                            <option value="1" selected>
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" >
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Назначить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-appointment-card">
+                            <div class="admin-appointment-card__top">
+                                <div>
+                                    <span class="admin-card-time">
+                                        18.11.2026 14:00                                    </span>
+
+                                    <h3>Ремонт тормозной системы</h3>
+
+                                    <p>
+                                        Андрей Васильев                                        ·
+                                        +7 900 555-55-55                                    </p>
+                                </div>
+
+                                <span class="status-badge status-badge--confirmed">
+                                    Подтверждена                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Автомобиль</span>
+                                    <strong>
+                                        Hyundai                                        Solaris                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span>Госномер</span>
+                                    <strong>М555ММ77</strong>
+                                </div>
+
+                                <div>
+                                    <span>Мастер</span>
+                                    <strong>Михаил Волков</strong>
+                                </div>
+
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>4 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оплата</span>
+                                    <strong>Не оплачено</strong>
+                                </div>
+
+                                <div>
+                                    <span>Создано</span>
+                                    <strong>17.11.2026 15:00</strong>
+                                </div>
+                            </div>
+
+                                                            <p class="record-card__comment">
+                                    Ремонт тормозной системы                                </p>
+                            
+                            
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-actions-grid">
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="change_status">
+                                        <input type="hidden" name="appointment_id" value="11">
+
+                                        <label>Статус</label>
+
+                                        <select name="status">
+                                                                                            <option value="Новая" >
+                                                    Новая                                                </option>
+                                                                                            <option value="Подтверждена" selected>
+                                                    Подтверждена                                                </option>
+                                                                                            <option value="В работе" >
+                                                    В работе                                                </option>
+                                                                                            <option value="Оказана" >
+                                                    Оказана                                                </option>
+                                                                                            <option value="Перенесена" >
+                                                    Перенесена                                                </option>
+                                                                                            <option value="Отменена" >
+                                                    Отменена                                                </option>
+                                                                                    </select>
+
+                                        <input
+                                            type="text"
+                                            name="cancel_reason"
+                                            placeholder="Причина отмены, если нужна"
+                                        >
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить статус
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="move_appointment">
+                                        <input type="hidden" name="appointment_id" value="11">
+
+                                        <label>Перенос</label>
+
+                                        <input
+                                            type="date"
+                                            name="new_date"
+                                            value="2026-11-18"
+                                            min="2026-11-17"
+                                        >
+
+                                        <input
+                                            type="time"
+                                            name="new_time"
+                                            value="14:00"
+                                        >
+
+                                        <select name="new_employee_id">
+                                            <option value="">Текущий мастер</option>
+
+                                                                                            <option value="1" >
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" selected>
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Перенести
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="assign_master">
+                                        <input type="hidden" name="appointment_id" value="11">
+
+                                        <label>Назначить мастера</label>
+
+                                        <select name="new_employee_id" required>
+                                            <option value="">Выберите мастера</option>
+
+                                                                                            <option value="1" >
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" selected>
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Назначить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-appointment-card">
+                            <div class="admin-appointment-card__top">
+                                <div>
+                                    <span class="admin-card-time">
+                                        17.11.2026 14:00                                    </span>
+
+                                    <h3>Диагностика двигателя</h3>
+
+                                    <p>
+                                        Андрей Васильев                                        ·
+                                        +7 900 555-55-55                                    </p>
+                                </div>
+
+                                <span class="status-badge status-badge--confirmed">
+                                    Подтверждена                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Автомобиль</span>
+                                    <strong>
+                                        Hyundai                                        Solaris                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span>Госномер</span>
+                                    <strong>М555ММ77</strong>
+                                </div>
+
+                                <div>
+                                    <span>Мастер</span>
+                                    <strong>Александр Петров</strong>
+                                </div>
+
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>2 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Оплата</span>
+                                    <strong>Не оплачено</strong>
+                                </div>
+
+                                <div>
+                                    <span>Создано</span>
+                                    <strong>17.11.2026 15:00</strong>
+                                </div>
+                            </div>
+
+                                                            <p class="record-card__comment">
+                                    Диагностика двигателя                                </p>
+                            
+                            
+                            <details class="admin-more">
+                                <summary>Управление</summary>
+
+                                <div class="admin-actions-grid">
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="change_status">
+                                        <input type="hidden" name="appointment_id" value="7">
+
+                                        <label>Статус</label>
+
+                                        <select name="status">
+                                                                                            <option value="Новая" >
+                                                    Новая                                                </option>
+                                                                                            <option value="Подтверждена" selected>
+                                                    Подтверждена                                                </option>
+                                                                                            <option value="В работе" >
+                                                    В работе                                                </option>
+                                                                                            <option value="Оказана" >
+                                                    Оказана                                                </option>
+                                                                                            <option value="Перенесена" >
+                                                    Перенесена                                                </option>
+                                                                                            <option value="Отменена" >
+                                                    Отменена                                                </option>
+                                                                                    </select>
+
+                                        <input
+                                            type="text"
+                                            name="cancel_reason"
+                                            placeholder="Причина отмены, если нужна"
+                                        >
+
+                                        <button type="submit" class="btn btn--orange btn--small">
+                                            Сохранить статус
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="move_appointment">
+                                        <input type="hidden" name="appointment_id" value="7">
+
+                                        <label>Перенос</label>
+
+                                        <input
+                                            type="date"
+                                            name="new_date"
+                                            value="2026-11-17"
+                                            min="2026-11-17"
+                                        >
+
+                                        <input
+                                            type="time"
+                                            name="new_time"
+                                            value="14:00"
+                                        >
+
+                                        <select name="new_employee_id">
+                                            <option value="">Текущий мастер</option>
+
+                                                                                            <option value="1" selected>
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" >
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Перенести
+                                        </button>
+                                    </form>
+
+                                    <form method="post" action="appointments.html" class="admin-action-form">
+                                        <input type="hidden" name="action" value="assign_master">
+                                        <input type="hidden" name="appointment_id" value="7">
+
+                                        <label>Назначить мастера</label>
+
+                                        <select name="new_employee_id" required>
+                                            <option value="">Выберите мастера</option>
+
+                                                                                            <option value="1" selected>
+                                                    Александр Петров                                                    — Старший механик                                                </option>
+                                                                                            <option value="3" >
+                                                    Дмитрий Крылов                                                    — Мастер-диагност                                                </option>
+                                                                                            <option value="4" >
+                                                    Михаил Волков                                                    — Автоэлектрик                                                </option>
+                                                                                            <option value="5" >
+                                                    Сергей Ким                                                    — Шиномонтажник                                                </option>
+                                                                                    </select>
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Назначить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                    </div>
+                    </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../assets/js/script.js"></script>
+<script src="../../../assets/js/demo.js" defer></script>
+</body>
+</html>

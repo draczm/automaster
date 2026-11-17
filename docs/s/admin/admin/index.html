@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../../assets/css/home.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+            
+                            <a
+                    href="index.html"
+                    class="nav__button is-active"
+                >
+                    Сводка
+                </a>
+
+                <a
+                    href="appointments.html"
+                    class=""
+                >
+                    Заявки
+                </a>
+
+                <a
+                    href="services.html"
+                    class=""
+                >
+                    Услуги
+                </a>
+
+                <a
+                    href="schedule.html"
+                    class=""
+                >
+                    Календарь
+                </a>
+
+                <a
+                    href="employees.html"
+                    class=""
+                >
+                    Мастера
+                </a>
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+            
+                            <a
+                    href="index.html"
+                    class="user-name is-active"
+                >
+                    Администратор                </a>
+
+                <a href="../../../index.html" class="header-login">Выйти</a>
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="admin-page">
+    <div class="container">
+        <div class="admin-hero">
+            <div>
+                <span class="label">Панель администратора</span>
+                <h1>Сводка работы автомастерской</h1>
+                <p>
+                    Здесь отображаются заявки, загрузка мастеров,
+                    выручка и состояние текущих заказов.
+                </p>
+            </div>
+
+            <div class="admin-hero__actions">
+                <a href="appointments.html" class="btn btn--orange">
+                    Управлять заявками
+                </a>
+
+                <a href="schedule.html" class="btn btn--light">
+                    Открыть календарь
+                </a>
+            </div>
+        </div>
+
+        <section class="admin-charts-grid">
+            <article class="admin-chart-card admin-chart-card--wide">
+                <div class="admin-chart-head">
+                    <div>
+                        <span class="label">Динамика</span>
+                        <h2>Выручка за 7 дней</h2>
+                    </div>
+
+                    <strong>8 300 ₽</strong>
+                </div>
+
+                <div class="admin-line-chart">
+                    <svg viewBox="0 0 640 220" preserveAspectRatio="none" aria-hidden="true">
+                        <line x1="28" y1="192" x2="612" y2="192"></line>
+                        <line x1="28" y1="120" x2="612" y2="120"></line>
+                        <line x1="28" y1="48" x2="612" y2="48"></line>
+
+                        <polyline points="28,192 125.3,192 222.7,192 320,192 417.3,192 514.7,28 612,192"></polyline>
+
+                                                                                <circle cx="28" cy="192" r="5"></circle>
+                                                                                <circle cx="125.3" cy="192" r="5"></circle>
+                                                                                <circle cx="222.7" cy="192" r="5"></circle>
+                                                                                <circle cx="320" cy="192" r="5"></circle>
+                                                                                <circle cx="417.3" cy="192" r="5"></circle>
+                                                                                <circle cx="514.7" cy="28" r="5"></circle>
+                                                                                <circle cx="612" cy="192" r="5"></circle>
+                                            </svg>
+
+                    <div class="admin-line-chart__labels">
+                                                    <span>
+                                <b>11.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>12.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>13.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>14.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>15.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>16.11</b>
+                                <small>8 300 ₽</small>
+                            </span>
+                                                    <span>
+                                <b>17.11</b>
+                                <small>0 ₽</small>
+                            </span>
+                                            </div>
+                </div>
+            </article>
+
+            <article class="admin-chart-card">
+                <div class="admin-chart-head">
+                    <div>
+                        <span class="label">Статусы</span>
+                        <h2>Состояние заявок</h2>
+                    </div>
+
+                    <strong>18</strong>
+                </div>
+
+                <div class="admin-status-chart">
+                                            
+                        <div class="admin-status-row">
+                            <div class="admin-status-row__top">
+                                <span>Подтверждена</span>
+                                <b>7</b>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 100%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-status-row">
+                            <div class="admin-status-row__top">
+                                <span>Новая</span>
+                                <b>6</b>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 85.7%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-status-row">
+                            <div class="admin-status-row__top">
+                                <span>Оказана</span>
+                                <b>3</b>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 42.9%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-status-row">
+                            <div class="admin-status-row__top">
+                                <span>Отменена</span>
+                                <b>1</b>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 14.3%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-status-row">
+                            <div class="admin-status-row__top">
+                                <span>В работе</span>
+                                <b>1</b>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 14.3%;"></i>
+                            </div>
+                        </div>
+                                    </div>
+            </article>
+
+            <article class="admin-chart-card">
+                <div class="admin-chart-head">
+                    <div>
+                        <span class="label">Неделя</span>
+                        <h2>Загрузка по дням</h2>
+                    </div>
+
+                    <strong>16</strong>
+                </div>
+
+                <div class="admin-day-load">
+                                            
+                        <div class="admin-day-load__row">
+                            <div class="admin-day-load__name">
+                                <b>Пн</b>
+                                <span>3 заявок</span>
+                            </div>
+
+                            <div class="admin-day-load__track">
+                                <i style="width: 60%;"></i>
+                            </div>
+
+                            <strong>3</strong>
+                        </div>
+                                            
+                        <div class="admin-day-load__row">
+                            <div class="admin-day-load__name">
+                                <b>Вт</b>
+                                <span>5 заявок</span>
+                            </div>
+
+                            <div class="admin-day-load__track">
+                                <i style="width: 100%;"></i>
+                            </div>
+
+                            <strong>5</strong>
+                        </div>
+                                            
+                        <div class="admin-day-load__row">
+                            <div class="admin-day-load__name">
+                                <b>Ср</b>
+                                <span>3 заявок</span>
+                            </div>
+
+                            <div class="admin-day-load__track">
+                                <i style="width: 60%;"></i>
+                            </div>
+
+                            <strong>3</strong>
+                        </div>
+                                            
+                        <div class="admin-day-load__row">
+                            <div class="admin-day-load__name">
+                                <b>Чт</b>
+                                <span>3 заявок</span>
+                            </div>
+
+                            <div class="admin-day-load__track">
+                                <i style="width: 60%;"></i>
+                            </div>
+
+                            <strong>3</strong>
+                        </div>
+                                            
+                        <div class="admin-day-load__row">
+                            <div class="admin-day-load__name">
+                                <b>Пт</b>
+                                <span>2 заявок</span>
+                            </div>
+
+                            <div class="admin-day-load__track">
+                                <i style="width: 40%;"></i>
+                            </div>
+
+                            <strong>2</strong>
+                        </div>
+                                    </div>
+            </article>
+
+            <article class="admin-chart-card">
+                <div class="admin-chart-head">
+                    <div>
+                        <span class="label">Услуги</span>
+                        <h2>Популярность</h2>
+                    </div>
+
+                    <a href="services.html" class="admin-link">Все услуги</a>
+                </div>
+
+                <div class="admin-rank-chart">
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Компьютерная диагностика</strong>
+                                <span>5 заявок · 2 000 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 100%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Замена моторного масла</strong>
+                                <span>4 заявок · 1 800 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 80%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Диагностика двигателя</strong>
+                                <span>3 заявок · 0 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 60%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Ремонт тормозной системы</strong>
+                                <span>2 заявок · 4 500 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 40%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Замена свечей зажигания</strong>
+                                <span>2 заявок · 0 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 40%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Шиномонтаж (комплект)</strong>
+                                <span>2 заявок · 0 ₽</span>
+                            </div>
+
+                            <div class="admin-chart-track">
+                                <i style="width: 40%;"></i>
+                            </div>
+                        </div>
+                                    </div>
+            </article>
+
+            <article class="admin-chart-card">
+                <div class="admin-chart-head">
+                    <div>
+                        <span class="label">Мастера</span>
+                        <h2>Загрузка</h2>
+                    </div>
+
+                    <a href="employees.html" class="admin-link">Все мастера</a>
+                </div>
+
+                <div class="admin-rank-chart">
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Александр Петров</strong>
+                                <span>
+                                    Старший механик                                    · 8 заявок
+                                    · 1 890 ₽                                </span>
+                            </div>
+
+                            <div class="admin-chart-track admin-chart-track--blue">
+                                <i style="width: 100%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Дмитрий Крылов</strong>
+                                <span>
+                                    Мастер-диагност                                    · 5 заявок
+                                    · 600 ₽                                </span>
+                            </div>
+
+                            <div class="admin-chart-track admin-chart-track--blue">
+                                <i style="width: 62.5%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Сергей Ким</strong>
+                                <span>
+                                    Шиномонтажник                                    · 3 заявок
+                                    · 0 ₽                                </span>
+                            </div>
+
+                            <div class="admin-chart-track admin-chart-track--blue">
+                                <i style="width: 37.5%;"></i>
+                            </div>
+                        </div>
+                                            
+                        <div class="admin-rank-row">
+                            <div>
+                                <strong>Михаил Волков</strong>
+                                <span>
+                                    Автоэлектрик                                    · 2 заявок
+                                    · 0 ₽                                </span>
+                            </div>
+
+                            <div class="admin-chart-track admin-chart-track--blue">
+                                <i style="width: 25%;"></i>
+                            </div>
+                        </div>
+                                    </div>
+            </article>
+
+            <article class="admin-chart-card admin-chart-card--summary">
+                <div class="admin-summary-chart">
+                    <div>
+                        <span>Активные заявки</span>
+                        <strong>14</strong>
+                    </div>
+
+                    <div>
+                        <span>Оказано услуг</span>
+                        <strong>3</strong>
+                    </div>
+
+                    <div>
+                        <span>Общая выручка</span>
+                        <strong>8 300 ₽</strong>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="admin-section-card">
+            <div class="admin-section-head">
+                <div>
+                    <span class="label">Заявки</span>
+                    <h2>Последние обращения</h2>
+                </div>
+
+                <a href="appointments.html" class="admin-link">
+                    Смотреть все
+                </a>
+            </div>
+
+                            <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Клиент</th>
+                                <th>Услуга</th>
+                                <th>Дата</th>
+                                <th>Мастер</th>
+                                <th>Статус</th>
+                                <th>Сумма</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                                                            <tr>
+                                    <td>
+                                        <strong>Иван Сидоров</strong>
+                                        <span>+7 900 111-11-11</span>
+                                    </td>
+
+                                    <td>Замена моторного масла</td>
+
+                                    <td>16.11.2026 09:00</td>
+
+                                    <td>Александр Петров</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--done">
+                                            Оказана                                        </span>
+                                    </td>
+
+                                    <td>1 800 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Ольга Смирнова</strong>
+                                        <span>+7 900 222-22-22</span>
+                                    </td>
+
+                                    <td>Компьютерная диагностика</td>
+
+                                    <td>16.11.2026 10:00</td>
+
+                                    <td>Дмитрий Крылов</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--done">
+                                            Оказана                                        </span>
+                                    </td>
+
+                                    <td>2 000 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Павел Кузнецов</strong>
+                                        <span>+7 900 333-33-33</span>
+                                    </td>
+
+                                    <td>Ремонт тормозной системы</td>
+
+                                    <td>16.11.2026 14:00</td>
+
+                                    <td>Александр Петров</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--done">
+                                            Оказана                                        </span>
+                                    </td>
+
+                                    <td>4 500 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Иван Сидоров</strong>
+                                        <span>+7 900 111-11-11</span>
+                                    </td>
+
+                                    <td>Замена моторного масла</td>
+
+                                    <td>17.11.2026 09:00</td>
+
+                                    <td>Александр Петров</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--confirmed">
+                                            Подтверждена                                        </span>
+                                    </td>
+
+                                    <td>1 800 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Ольга Смирнова</strong>
+                                        <span>+7 900 222-22-22</span>
+                                    </td>
+
+                                    <td>Компьютерная диагностика</td>
+
+                                    <td>17.11.2026 10:00</td>
+
+                                    <td>Дмитрий Крылов</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--work">
+                                            В работе                                        </span>
+                                    </td>
+
+                                    <td>2 000 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Мария Орлова</strong>
+                                        <span>+7 900 444-44-44</span>
+                                    </td>
+
+                                    <td>Шиномонтаж (комплект)</td>
+
+                                    <td>17.11.2026 11:00</td>
+
+                                    <td>Сергей Ким</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--confirmed">
+                                            Подтверждена                                        </span>
+                                    </td>
+
+                                    <td>2 400 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Андрей Васильев</strong>
+                                        <span>+7 900 555-55-55</span>
+                                    </td>
+
+                                    <td>Диагностика двигателя</td>
+
+                                    <td>17.11.2026 14:00</td>
+
+                                    <td>Александр Петров</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--confirmed">
+                                            Подтверждена                                        </span>
+                                    </td>
+
+                                    <td>2 500 ₽</td>
+                                </tr>
+                                                            <tr>
+                                    <td>
+                                        <strong>Елена Морозова</strong>
+                                        <span>+7 900 666-66-66</span>
+                                    </td>
+
+                                    <td>Замена свечей зажигания</td>
+
+                                    <td>17.11.2026 15:00</td>
+
+                                    <td>Дмитрий Крылов</td>
+
+                                    <td>
+                                        <span class="status-badge status-badge--new">
+                                            Новая                                        </span>
+                                    </td>
+
+                                    <td>1 600 ₽</td>
+                                </tr>
+                                                    </tbody>
+                    </table>
+                </div>
+                    </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../assets/js/script.js"></script>
+<script src="../../../assets/js/demo.js" defer></script>
+</body>
+</html>
