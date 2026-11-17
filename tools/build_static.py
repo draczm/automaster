@@ -38,9 +38,9 @@ ROLES = {
     'client': {
         'dir': 's/client',
         'login': ('client@automaster.local', 'Client123!'),
-        'start': ['profile.php'],
-        'allow': lambda p: p == 'profile.php',
-        'limit': 5,
+        'start': ['profile.php', 'index.php', 'appointment.php'],
+        'allow': lambda p: p in ('profile.php', 'index.php', 'appointment.php'),
+        'limit': 20,
     },
     'emp': {
         'dir': 's/emp',

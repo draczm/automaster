@@ -727,7 +727,7 @@ require_once 'includes/header.php';
             </article>
         </div>
 
-        <section class="master-section-card master-calendar">
+        <section class="master-section-card master-calendar" id="calendar">
             <div class="profile-section-head">
                 <div>
                     <span class="label">Календарь</span>
@@ -790,6 +790,21 @@ require_once 'includes/header.php';
                                     href="master-schedule.php?date=<?= htmlspecialchars($calDay['date']) ?>"
                                     class="admin-calendar-event <?= msCalClass($ev['status']) ?>"
                                     style="top: <?= (int)$ev['cal_top'] ?>px; height: <?= (int)$ev['cal_height'] ?>px;"
+                                    data-service="<?= htmlspecialchars($ev['service_name'] ?? 'Услуга') ?>"
+                                    data-client="<?= htmlspecialchars($ev['client_name'] ?? '') ?>"
+                                    data-phone="<?= htmlspecialchars($ev['phone'] ?? '') ?>"
+                                    data-car="<?= htmlspecialchars(trim(($ev['car_brand'] ?? '') . ' ' . ($ev['car_model'] ?? ''))) ?>"
+                                    data-plate="<?= htmlspecialchars($ev['license_plate'] ?? '') ?>"
+                                    data-master="<?= htmlspecialchars($employee['full_name'] ?? '') ?>"
+                                    data-date="<?= date('d.m.Y', strtotime($ev['start_datetime'])) ?>"
+                                    data-time="<?= htmlspecialchars($ev['cal_start'] . ' — ' . $ev['cal_end']) ?>"
+                                    data-status="<?= htmlspecialchars($ev['status']) ?>"
+                                    data-price="<?= number_format((float)($ev['master_income'] ?? 0), 0, '.', ' ') ?> ₽"
+                                    data-price-label="Оплата мастера"
+                                    data-pay="<?= htmlspecialchars($ev['payment_status'] ?? '') ?>"
+                                    data-comment="<?= htmlspecialchars($ev['work_description'] ?? '') ?>"
+                                    data-href="master-schedule.php?date=<?= htmlspecialchars($calDay['date']) ?>"
+                                    data-href-label="Открыть день и управлять записью"
                                 >
                                     <div class="admin-calendar-event__time"><?= htmlspecialchars($ev['cal_start']) ?> — <?= htmlspecialchars($ev['cal_end']) ?></div>
                                     <strong><?= htmlspecialchars($ev['service_name'] ?? 'Услуга') ?></strong>

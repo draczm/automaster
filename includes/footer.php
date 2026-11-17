@@ -23,5 +23,6 @@ $basePath = $isAdminArea ? '../' : '';
 </footer>
 
 <script src="<?= $basePath ?>assets/js/script.js"></script>
+<script src="<?= $basePath ?>assets/js/calendar-modal.js"></script>
 </body>
 </html>

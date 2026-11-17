@@ -1235,3 +1235,189 @@ a.admin-calendar-event:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   Верхнее меню и окно записи календаря
+========================================================= */
+.nav a.is-active {
+    background: var(--accent-soft);
+    color: var(--accent-dark) !important;
+}
+
+.nav a:not(.is-active):hover {
+    background: rgba(23, 32, 51, 0.06);
+}
+
+.user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 6px 16px 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.user-chip em {
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--primary);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.admin-calendar-event[data-service] {
+    cursor: pointer;
+}
+
+.admin-calendar-event[data-service]:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+body.cal-modal-open {
+    overflow: hidden;
+}
+
+.cal-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.cal-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 24, 38, 0.55);
+    backdrop-filter: blur(3px);
+    animation: calFade 0.2s ease;
+}
+
+.cal-modal__card {
+    position: relative;
+    width: min(100%, 560px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(18, 24, 38, 0.35);
+    animation: calPop 0.22s ease;
+}
+
+.cal-modal__card h2 {
+    margin: 8px 0 14px;
+    font-family: var(--font-title);
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--primary);
+}
+
+.cal-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--surface-soft);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cal-modal__close:hover {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+.cal-modal__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.cal-modal__chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-soft);
+}
+
+.cal-modal__chip--status {
+    background: var(--accent-soft);
+    border-color: transparent;
+    color: var(--accent-dark);
+}
+
+.cal-modal__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.cal-modal__row {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.cal-modal__row span {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.cal-modal__row strong {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.cal-modal__comment {
+    margin: 14px 0 0;
+    padding: 10px 14px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    background: var(--accent-soft);
+    font-size: 13px;
+    color: var(--text-soft);
+}
+
+.cal-modal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+@keyframes calFade { from { opacity: 0; } }
+@keyframes calPop { from { opacity: 0; transform: translateY(12px) scale(0.97); } }
+
+@media (max-width: 520px) {
+    .cal-modal__grid {
+        grid-template-columns: 1fr;
+    }
+}

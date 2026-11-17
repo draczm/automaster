@@ -383,6 +383,23 @@ require_once '../includes/header.php';
                                 <article
                                     class="admin-calendar-event <?= calendarStatusClass($appointment['status']) ?>"
                                     style="top: <?= (int)$appointment['calendar_top'] ?>px; height: <?= (int)$appointment['calendar_height'] ?>px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="<?= htmlspecialchars($appointment['service_name'] ?? 'Услуга не указана') ?>"
+                                    data-category="<?= htmlspecialchars($appointment['service_category'] ?? '') ?>"
+                                    data-client="<?= htmlspecialchars($appointment['client_name'] ?? '') ?>"
+                                    data-phone="<?= htmlspecialchars($appointment['phone'] ?? '') ?>"
+                                    data-car="<?= htmlspecialchars(trim(($appointment['car_brand'] ?? '') . ' ' . ($appointment['car_model'] ?? ''))) ?>"
+                                    data-plate="<?= htmlspecialchars($appointment['license_plate'] ?? '') ?>"
+                                    data-master="<?= htmlspecialchars($appointment['master_name'] ?? 'не назначен') ?>"
+                                    data-date="<?= date('d.m.Y', strtotime($appointment['start_datetime'])) ?>"
+                                    data-time="<?= htmlspecialchars($appointment['calendar_start'] . ' — ' . $appointment['calendar_end']) ?>"
+                                    data-status="<?= htmlspecialchars($appointment['status']) ?>"
+                                    data-price="<?= number_format((float)($appointment['service_price_at_time'] ?? 0), 0, '.', ' ') ?> ₽"
+                                    data-pay="<?= htmlspecialchars($appointment['payment_status'] ?? '') ?>"
+                                    data-comment="<?= htmlspecialchars($appointment['work_description'] ?? '') ?>"
+                                    data-href="appointments.php?search=<?= urlencode($appointment['phone'] ?? '') ?>"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         <?= htmlspecialchars($appointment['calendar_start']) ?>

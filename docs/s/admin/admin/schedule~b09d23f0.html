@@ -1,88 +1,86 @@
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>CARREPAIR — ремонт автомобилей</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
-    <link rel="stylesheet" href="../../../assets/css/style.css">
-    <link rel="stylesheet" href="../../../assets/css/admin.css">
-    <link rel="stylesheet" href="../../../assets/css/home.css">
-    <link rel="stylesheet" href="../../../assets/css/pages.css">
-</head>
-<body>
-
-<header class="header">
-    <div class="container header__inner">
-        <a href="index.html" class="logo">
-            <span class="logo__icon">CR</span>
-            <span class="logo__text">CARREPAIR</span>
-        </a>
-
-        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="nav nav--center" id="mainNav">
-            
-            
-                            <a
-                    href="index.html"
-                    class="nav__button"
-                >
-                    Сводка
-                </a>
-
-                <a
-                    href="appointments.html"
-                    class=""
-                >
-                    Заявки
-                </a>
-
-                <a
-                    href="services.html"
-                    class=""
-                >
-                    Услуги
-                </a>
-
-                <a
-                    href="schedule.html"
-                    class=" is-active"
-                >
-                    Календарь
-                </a>
-
-                <a
-                    href="employees.html"
-                    class=""
-                >
-                    Мастера
-                </a>
-                    </nav>
-
-        <div class="header-actions">
-            
-            
-            
-                            <a
-                    href="index.html"
-                    class="user-name"
-                >
-                    Администратор                </a>
-
-                <a href="../../../index.html" class="header-login">Выйти</a>
-                    </div>
-    </div>
-</header>
-
-
-<div class="toast" id="toast"></div>
-
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="../../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../../assets/css/home.css">
+    <link rel="stylesheet" href="../../../assets/css/pages.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+            
+                            <a
+                    href="index.html"
+                    class=""
+                >
+                    Сводка
+                </a>
+
+                <a
+                    href="appointments.html"
+                    class=""
+                >
+                    Заявки
+                </a>
+
+                <a
+                    href="services.html"
+                    class=""
+                >
+                    Услуги
+                </a>
+
+                <a
+                    href="schedule.html"
+                    class=" is-active"
+                >
+                    Календарь
+                </a>
+
+                <a
+                    href="employees.html"
+                    class=""
+                >
+                    Мастера
+                </a>
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+            
+                            <span class="user-chip">
+                    <em>Админ</em>
+                    Администратор                </span>
+
+                <a href="../../../index.html" class="header-login">Выйти</a>
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
 <main>
 <section class="admin-page">
     <div class="container">
@@ -467,6 +465,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--done"
                                     style="top: 58px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена моторного масла"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Иван Сидоров"
+                                    data-phone="+7 900 111-11-11"
+                                    data-car="Toyota Camry"
+                                    data-plate="А111АА77"
+                                    data-master="Александр Петров"
+                                    data-date="16.11.2026"
+                                    data-time="09:00 — 10:00"
+                                    data-status="Оказана"
+                                    data-price="1 800 ₽"
+                                    data-pay="Оплачено"
+                                    data-comment="Замена моторного масла"
+                                    data-href="appointments~441923df.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         09:00                                        —
@@ -496,6 +511,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--done"
                                     style="top: 174px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Компьютерная диагностика"
+                                    data-category="Диагностика"
+                                    data-client="Ольга Смирнова"
+                                    data-phone="+7 900 222-22-22"
+                                    data-car="Kia Rio"
+                                    data-plate="В222ВВ77"
+                                    data-master="Дмитрий Крылов"
+                                    data-date="16.11.2026"
+                                    data-time="10:00 — 11:00"
+                                    data-status="Оказана"
+                                    data-price="2 000 ₽"
+                                    data-pay="Оплачено"
+                                    data-comment="Компьютерная диагностика"
+                                    data-href="appointments~3fa43f97.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         10:00                                        —
@@ -525,6 +557,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--done"
                                     style="top: 638px; height: 342px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Ремонт тормозной системы"
+                                    data-category="Ремонт"
+                                    data-client="Павел Кузнецов"
+                                    data-phone="+7 900 333-33-33"
+                                    data-car="Lada Vesta"
+                                    data-plate="Е333ЕЕ77"
+                                    data-master="Александр Петров"
+                                    data-date="16.11.2026"
+                                    data-time="14:00 — 17:00"
+                                    data-status="Оказана"
+                                    data-price="4 500 ₽"
+                                    data-pay="Оплачено"
+                                    data-comment="Ремонт тормозной системы"
+                                    data-href="appointments~89e24403.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         14:00                                        —
@@ -661,6 +710,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 58px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена моторного масла"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Иван Сидоров"
+                                    data-phone="+7 900 111-11-11"
+                                    data-car="Toyota Camry"
+                                    data-plate="А111АА77"
+                                    data-master="Александр Петров"
+                                    data-date="17.11.2026"
+                                    data-time="09:00 — 10:00"
+                                    data-status="Подтверждена"
+                                    data-price="1 800 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Замена моторного масла"
+                                    data-href="appointments~441923df.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         09:00                                        —
@@ -690,6 +756,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--work"
                                     style="top: 174px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Компьютерная диагностика"
+                                    data-category="Диагностика"
+                                    data-client="Ольга Смирнова"
+                                    data-phone="+7 900 222-22-22"
+                                    data-car="Kia Rio"
+                                    data-plate="В222ВВ77"
+                                    data-master="Дмитрий Крылов"
+                                    data-date="17.11.2026"
+                                    data-time="10:00 — 11:00"
+                                    data-status="В работе"
+                                    data-price="2 000 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Компьютерная диагностика"
+                                    data-href="appointments~3fa43f97.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         10:00                                        —
@@ -719,6 +802,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 290px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Шиномонтаж (комплект)"
+                                    data-category="Шиномонтаж"
+                                    data-client="Мария Орлова"
+                                    data-phone="+7 900 444-44-44"
+                                    data-car="Skoda Octavia"
+                                    data-plate="К444КК77"
+                                    data-master="Сергей Ким"
+                                    data-date="17.11.2026"
+                                    data-time="11:00 — 12:00"
+                                    data-status="Подтверждена"
+                                    data-price="2 400 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Шиномонтаж (комплект)"
+                                    data-href="appointments~a825da47.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         11:00                                        —
@@ -748,6 +848,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 638px; height: 226px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Диагностика двигателя"
+                                    data-category="Диагностика"
+                                    data-client="Андрей Васильев"
+                                    data-phone="+7 900 555-55-55"
+                                    data-car="Hyundai Solaris"
+                                    data-plate="М555ММ77"
+                                    data-master="Александр Петров"
+                                    data-date="17.11.2026"
+                                    data-time="14:00 — 16:00"
+                                    data-status="Подтверждена"
+                                    data-price="2 500 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Диагностика двигателя"
+                                    data-href="appointments~3d42b501.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         14:00                                        —
@@ -777,6 +894,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--new"
                                     style="top: 754px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена свечей зажигания"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Елена Морозова"
+                                    data-phone="+7 900 666-66-66"
+                                    data-car="Renault Duster"
+                                    data-plate="Н666НН77"
+                                    data-master="Дмитрий Крылов"
+                                    data-date="17.11.2026"
+                                    data-time="15:00 — 16:00"
+                                    data-status="Новая"
+                                    data-price="1 600 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Замена свечей зажигания"
+                                    data-href="appointments~95575bbb.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         15:00                                        —
@@ -913,6 +1047,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--new"
                                     style="top: 58px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Компьютерная диагностика"
+                                    data-category="Диагностика"
+                                    data-client="Ольга Смирнова"
+                                    data-phone="+7 900 222-22-22"
+                                    data-car="Kia Rio"
+                                    data-plate="В222ВВ77"
+                                    data-master="Александр Петров"
+                                    data-date="18.11.2026"
+                                    data-time="09:00 — 10:00"
+                                    data-status="Новая"
+                                    data-price="2 000 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Компьютерная диагностика"
+                                    data-href="appointments~3fa43f97.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         09:00                                        —
@@ -942,6 +1093,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 174px; height: 226px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Диагностика двигателя"
+                                    data-category="Диагностика"
+                                    data-client="Павел Кузнецов"
+                                    data-phone="+7 900 333-33-33"
+                                    data-car="Lada Vesta"
+                                    data-plate="Е333ЕЕ77"
+                                    data-master="Дмитрий Крылов"
+                                    data-date="18.11.2026"
+                                    data-time="10:00 — 12:00"
+                                    data-status="Подтверждена"
+                                    data-price="2 500 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Диагностика двигателя"
+                                    data-href="appointments~89e24403.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         10:00                                        —
@@ -971,6 +1139,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 638px; height: 342px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Ремонт тормозной системы"
+                                    data-category="Ремонт"
+                                    data-client="Андрей Васильев"
+                                    data-phone="+7 900 555-55-55"
+                                    data-car="Hyundai Solaris"
+                                    data-plate="М555ММ77"
+                                    data-master="Михаил Волков"
+                                    data-date="18.11.2026"
+                                    data-time="14:00 — 17:00"
+                                    data-status="Подтверждена"
+                                    data-price="4 500 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Ремонт тормозной системы"
+                                    data-href="appointments~3d42b501.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         14:00                                        —
@@ -1107,6 +1292,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--new"
                                     style="top: 58px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена свечей зажигания"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Мария Орлова"
+                                    data-phone="+7 900 444-44-44"
+                                    data-car="Skoda Octavia"
+                                    data-plate="К444КК77"
+                                    data-master="Александр Петров"
+                                    data-date="19.11.2026"
+                                    data-time="09:00 — 10:00"
+                                    data-status="Новая"
+                                    data-price="1 600 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Замена свечей зажигания"
+                                    data-href="appointments~a825da47.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         09:00                                        —
@@ -1136,6 +1338,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--confirmed"
                                     style="top: 290px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена моторного масла"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Елена Морозова"
+                                    data-phone="+7 900 666-66-66"
+                                    data-car="Renault Duster"
+                                    data-plate="Н666НН77"
+                                    data-master="Сергей Ким"
+                                    data-date="19.11.2026"
+                                    data-time="11:00 — 12:00"
+                                    data-status="Подтверждена"
+                                    data-price="1 800 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Замена моторного масла"
+                                    data-href="appointments~95575bbb.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         11:00                                        —
@@ -1165,6 +1384,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--new"
                                     style="top: 754px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Компьютерная диагностика"
+                                    data-category="Диагностика"
+                                    data-client="Иван Сидоров"
+                                    data-phone="+7 900 111-11-11"
+                                    data-car="Toyota Camry"
+                                    data-plate="А111АА77"
+                                    data-master="Михаил Волков"
+                                    data-date="19.11.2026"
+                                    data-time="15:00 — 16:00"
+                                    data-status="Новая"
+                                    data-price="2 000 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Компьютерная диагностика"
+                                    data-href="appointments~441923df.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         15:00                                        —
@@ -1301,6 +1537,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--new"
                                     style="top: 174px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Шиномонтаж (комплект)"
+                                    data-category="Шиномонтаж"
+                                    data-client="Ольга Смирнова"
+                                    data-phone="+7 900 222-22-22"
+                                    data-car="Kia Rio"
+                                    data-plate="В222ВВ77"
+                                    data-master="Сергей Ким"
+                                    data-date="20.11.2026"
+                                    data-time="10:00 — 11:00"
+                                    data-status="Новая"
+                                    data-price="2 400 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Шиномонтаж (комплект)"
+                                    data-href="appointments~3fa43f97.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         10:00                                        —
@@ -1330,6 +1583,23 @@
                                                             <article
                                     class="admin-calendar-event admin-calendar-event--cancel"
                                     style="top: 638px; height: 110px;"
+                                    tabindex="0"
+                                    role="button"
+                                    data-service="Замена моторного масла"
+                                    data-category="Техническое обслуживание"
+                                    data-client="Павел Кузнецов"
+                                    data-phone="+7 900 333-33-33"
+                                    data-car="Lada Vesta"
+                                    data-plate="Е333ЕЕ77"
+                                    data-master="Александр Петров"
+                                    data-date="20.11.2026"
+                                    data-time="14:00 — 15:00"
+                                    data-status="Отменена"
+                                    data-price="1 800 ₽"
+                                    data-pay="Не оплачено"
+                                    data-comment="Замена моторного масла"
+                                    data-href="appointments~89e24403.html"
+                                    data-href-label="Все заявки клиента"
                                 >
                                     <div class="admin-calendar-event__time">
                                         14:00                                        —
@@ -1363,26 +1633,27 @@
     </div>
 </section>
 
-
-</main>
-
-<footer class="site-footer">
-    <div class="container">
-        <div class="site-footer__inner">
-            <div>
-                <strong>CARREPAIR</strong>
-                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
-            </div>
-
-            <div>
-                <span>Йошкар-Ола</span>
-                <span>2026</span>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="../../../assets/js/script.js"></script>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../../assets/js/script.js"></script>
+<script src="../../../assets/js/calendar-modal.js"></script>
 <script src="../../../assets/js/demo.js" defer></script>
-</body>
+</body>
 </html>

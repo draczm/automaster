@@ -121,10 +121,12 @@ if ($headerRole === 'admin') {
             <?php if (isset($_SESSION['user_id']) && $headerRole === 'employee'): ?>
                 <a
                     href="<?= $basePath ?>master-schedule.php"
-                    class="nav__button<?= headerActiveClass(!$isAdminArea && $currentPage === 'master-schedule.php') ?>"
+                    class="<?= headerActiveClass(!$isAdminArea && $currentPage === 'master-schedule.php') ?>"
                 >
                     Ежедневник
                 </a>
+
+                <a href="<?= $basePath ?>master-schedule.php#calendar">Календарь</a>
 
                 <a
                     href="<?= $basePath ?>master-training.php"
@@ -137,7 +139,7 @@ if ($headerRole === 'admin') {
             <?php if (isset($_SESSION['user_id']) && $headerRole === 'admin'): ?>
                 <a
                     href="<?= $basePath ?>admin/index.php"
-                    class="nav__button<?= headerActiveClass($isAdminArea && $currentPage === 'index.php') ?>"
+                    class="<?= headerActiveClass($isAdminArea && $currentPage === 'index.php') ?>"
                 >
                     Сводка
                 </a>
@@ -207,23 +209,19 @@ if ($headerRole === 'admin') {
             <?php endif; ?>
 
             <?php if (isset($_SESSION['user_id']) && $headerRole === 'employee'): ?>
-                <a
-                    href="<?= $basePath ?>master-schedule.php"
-                    class="user-name<?= headerActiveClass(!$isAdminArea && $currentPage === 'master-schedule.php') ?>"
-                >
+                <span class="user-chip">
+                    <em>Сотрудник</em>
                     <?= htmlspecialchars($headerUserName) ?>
-                </a>
+                </span>
 
                 <a href="<?= $basePath ?>logout.php" class="header-login">Выйти</a>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['user_id']) && $headerRole === 'admin'): ?>
-                <a
-                    href="<?= $basePath ?>admin/index.php"
-                    class="user-name<?= headerActiveClass($isAdminArea && $currentPage === 'index.php') ?>"
-                >
+                <span class="user-chip">
+                    <em>Админ</em>
                     <?= htmlspecialchars($headerUserName) ?>
-                </a>
+                </span>
 
                 <a href="<?= $basePath ?>logout.php" class="header-login">Выйти</a>
             <?php endif; ?>
