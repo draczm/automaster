@@ -1,0 +1,7 @@
+test.php
+test.sql
+.env
+*.log
+.vscode/
+.idea/
+Thumbs.db
