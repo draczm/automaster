@@ -1,0 +1,10 @@
+{
+  "name": "AutoMaster (PHP + MariaDB)",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": { "label": "AutoMaster", "onAutoForward": "openBrowser" }
+  }
+}
