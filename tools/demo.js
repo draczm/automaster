@@ -9,7 +9,8 @@
 
     var ACCOUNTS = [
         { email: 'admin@automaster.local', password: 'Admin123!', home: 's/admin/admin/index.html' },
-        { email: 'user@automaster.local', password: 'User123!', home: 's/emp/master-schedule.html' }
+        { email: 'user@automaster.local', password: 'User123!', home: 's/emp/master-schedule.html' },
+        { email: 'client@automaster.local', password: 'Client123!', home: 's/client/profile.html' }
     ];
 
     /* ---------- уведомление ---------- */
@@ -143,7 +144,8 @@
             'font:13px/1.6 Inter,Arial,sans-serif;color:#172033;';
         hint.innerHTML = '<strong>Демо-аккаунты</strong><br>' +
             'Администратор: <b>admin@automaster.local</b> / <b>Admin123!</b><br>' +
-            'Сотрудник: <b>user@automaster.local</b> / <b>User123!</b>';
+            'Сотрудник: <b>user@automaster.local</b> / <b>User123!</b><br>' +
+            'Покупатель: <b>client@automaster.local</b> / <b>Client123!</b>';
         form.parentNode.appendChild(hint);
     }
 

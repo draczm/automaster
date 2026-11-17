@@ -7,7 +7,8 @@
 | Роль | Email | Пароль | Куда попадает |
 |---|---|---|---|
 | Администратор | admin@automaster.local | Admin123! | `admin/index.php` (записи, услуги, сотрудники, расписание) |
-| Сотрудник (пользователь) | user@automaster.local | User123! | `master-schedule.php` (календарь и записи мастера) |
+| Сотрудник | user@automaster.local | User123! | `master-schedule.php` (календарь и записи мастера) |
+| Покупатель | client@automaster.local | Client123! | `profile.php` (автомобили, записи, бонусы) |
 
 Клиенты могут зарегистрироваться сами на `register.php`.
 
@@ -41,6 +42,6 @@ Codespace останавливается при простое; при повт�
 Статическая версия сайта лежит в папке `docs/` и открывается в любом браузере, PHP и база не нужны:
 **https://draczm.github.io/automaster/**
 
-- Вход: `admin@automaster.local` / `Admin123!` (админ) и `user@automaster.local` / `User123!` (сотрудник); подсказка есть на странице входа.
+- Вход: админ `admin@automaster.local` / `Admin123!`, сотрудник `user@automaster.local` / `User123!`, покупатель `client@automaster.local` / `Client123!`; подсказка есть на странице входа.
 - Все страницы кликабельны, данные заполнены. Изменения (формы) не сохраняются.
 - Пересобрать после правок: поднять PHP на демо-базе и выполнить `python tools/build_static.py http://127.0.0.1:8099` (см. шапку скрипта).

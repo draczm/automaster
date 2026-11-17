@@ -35,6 +35,13 @@ ROLES = {
         'allow': lambda p: p.startswith('admin/'),
         'limit': 45,
     },
+    'client': {
+        'dir': 's/client',
+        'login': ('client@automaster.local', 'Client123!'),
+        'start': ['profile.php'],
+        'allow': lambda p: p == 'profile.php',
+        'limit': 5,
+    },
     'emp': {
         'dir': 's/emp',
         'login': ('user@automaster.local', 'User123!'),

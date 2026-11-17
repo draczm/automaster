@@ -2,7 +2,7 @@ USE `automaster`;
 SET NAMES utf8mb4;
 
 -- Демо-данные: 2 аккаунта (администратор и сотрудник), услуги, мастера, расписание, записи.
--- Логины: admin@automaster.local / Admin123!   user@automaster.local / User123!
+-- Логины: admin@automaster.local / Admin123!   user@automaster.local / User123!   client@automaster.local / Client123!
 
 INSERT INTO employees (id, full_name, position, phone, email, employee_number, hire_date, salary, specialization, commission_percent, is_master, work_status) VALUES
 (1, 'Александр Петров', 'Старший механик', '+7 900 000-00-01', 'user@automaster.local', 'EMP001', '2024-01-10', 60000.00, 'Двигатель, ходовая, ТО', 30.00, 1, 'Работает'),
@@ -42,6 +42,19 @@ INSERT INTO clients (id, full_name, phone, email, bonus_points) VALUES
 (4, 'Мария Орлова',    '+7 900 444-44-44', 'orlova@example.com', 80),
 (5, 'Андрей Васильев', '+7 900 555-55-55', 'vasiliev@example.com', 0),
 (6, 'Елена Морозова',  '+7 900 666-66-66', 'morozova@example.com', 0);
+
+-- Третий аккаунт: покупатель (клиент) Иван Сидоров
+INSERT INTO users (id, client_id, employee_id, full_name, email, phone, password_hash, role, status) VALUES
+(3, 1, NULL, 'Иван Сидоров', 'client@automaster.local', '+7 900 111-11-11', '$2y$10$QF9ZNe1lNUQbMzUMiFkC4ex6XBQoPCzvdyDhwz1uXIoAPPMsTS2zm', 'client', 'active');
+
+INSERT INTO cars (client_id, brand, model, year, vin, license_plate) VALUES
+(1, 'Toyota', 'Camry', 2018, 'JTNB11HK103000001', 'А111АА77'),
+(1, 'Lada', 'Granta', 2021, 'XTA219010M0000002', 'Т777ТТ77');
+
+INSERT INTO bonus_transactions (client_id, points, operation_type, description) VALUES
+(1, 100, 'Начисление', 'Приветственный бонус за регистрацию'),
+(1, 90, 'Начисление', 'Бонус за услугу «Замена моторного масла»'),
+(1, 100, 'Списание', 'Списание баллов при оплате');
 
 -- Записи относительно текущей даты, чтобы календарь не был пустым
 CREATE TEMPORARY TABLE tmp_a (off_days INT, t TIME, svc INT, emp INT, cli INT, car VARCHAR(40), model VARCHAR(40), plate VARCHAR(20), st VARCHAR(30), pay VARCHAR(20));
