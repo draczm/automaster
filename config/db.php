@@ -1,8 +1,12 @@
 <?php
-$host = getenv('DB_HOST') ?: 'localhost';
-$dbname = getenv('DB_NAME') ?: 'automaster';
-$username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASS') ?: '';
+$localCfg = __DIR__ . '/db.local.php';
+if (is_file($localCfg)) {
+    require $localCfg; // задаёт $host, $dbname, $username, $password на хостинге
+}
+$host = $host ?? (getenv('DB_HOST') ?: 'localhost');
+$dbname = $dbname ?? (getenv('DB_NAME') ?: 'automaster');
+$username = $username ?? (getenv('DB_USER') ?: 'root');
+$password = $password ?? (getenv('DB_PASS') ?: '');
 
 try {
     $pdo = new PDO(

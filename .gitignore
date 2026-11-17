@@ -5,3 +5,4 @@ test.sql
 .vscode/
 .idea/
 Thumbs.db
+config/db.local.php
