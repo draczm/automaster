@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../../assets/css/style.css">
     <link rel="stylesheet" href="../../../assets/css/admin.css">
     <link rel="stylesheet" href="../../../assets/css/home.css">
+    <link rel="stylesheet" href="../../../assets/css/pages.css">
 </head>
 <body>
 
@@ -82,1282 +83,1282 @@
 
 <div class="toast" id="toast"></div>
 
-<main>
-<section class="admin-page">
-    <div class="container">
-        <div class="admin-hero admin-hero--single">
-            <div>
-                <span class="label">Администрирование</span>
-
-                <h1>Управление услугами</h1>
-
-                <p>
-                    Здесь администратор добавляет услуги, меняет стоимость,
-                    длительность, бонусы и видимость услуги на сайте.
-                </p>
-            </div>
-        </div>
-
-        
-        
-        <div class="admin-stats-grid admin-stats-grid--services">
-            <article class="admin-stat-card">
-                <span>Всего услуг</span>
-                <strong>6</strong>
-                <p>в базе данных</p>
-            </article>
-
-            <article class="admin-stat-card">
-                <span>Активные</span>
-                <strong>6</strong>
-                <p>показываются клиентам</p>
-            </article>
-
-            <article class="admin-stat-card">
-                <span>Скрытые</span>
-                <strong>0</strong>
-                <p>не доступны для записи</p>
-            </article>
-
-            <article class="admin-stat-card">
-                <span>Найдено</span>
-                <strong>6</strong>
-                <p>по текущему фильтру</p>
-            </article>
-        </div>
-
-        <section class="admin-section-card">
-            <details class="admin-collapsible">
-                <summary>
-                    <span>
-                        <b>Добавить услугу</b>
-                        <small>Название, цена, длительность, бонусы и изображение</small>
-                    </span>
-                </summary>
-
-                <form method="post" action="services.html" class="admin-service-form admin-service-form--collapsible">
-                    <input type="hidden" name="action" value="create_service">
-
-                    <div class="form-group">
-                        <label for="new_name">Название *</label>
-                        <input
-                            type="text"
-                            id="new_name"
-                            name="name"
-                            placeholder="Например: Замена аккумулятора"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="new_category">Категория *</label>
-                        <select id="new_category" name="category" required>
-                                                            <option value="Техническое обслуживание">
-                                    Техническое обслуживание                                </option>
-                                                            <option value="Диагностика">
-                                    Диагностика                                </option>
-                                                            <option value="Ремонт">
-                                    Ремонт                                </option>
-                                                    </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="new_price">Стоимость, ₽ *</label>
-                        <input
-                            type="number"
-                            id="new_price"
-                            name="price"
-                            min="1"
-                            step="1"
-                            placeholder="2500"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="new_duration">Длительность, мин. *</label>
-                        <input
-                            type="number"
-                            id="new_duration"
-                            name="duration_minutes"
-                            min="15"
-                            step="15"
-                            placeholder="60"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="new_bonus">Бонусы, %</label>
-                        <input
-                            type="number"
-                            id="new_bonus"
-                            name="bonus_percent"
-                            min="0"
-                            max="50"
-                            step="0.5"
-                            value="5"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="new_image">Картинка</label>
-                        <input
-                            type="text"
-                            id="new_image"
-                            name="image"
-                            placeholder="assets/img/services/service-1.jpg"
-                        >
-                    </div>
-
-                    <div class="form-group admin-service-form__description">
-                        <label for="new_description">Описание *</label>
-                        <textarea
-                            id="new_description"
-                            name="description"
-                            placeholder="Краткое описание услуги для карточки и формы записи"
-                            required
-                        ></textarea>
-                    </div>
-
-                    <label class="admin-check">
-                        <input type="checkbox" name="is_active" checked>
-                        <span>Показывать услугу на сайте</span>
-                    </label>
-
-                    <button type="submit" class="btn btn--orange">
-                        Добавить услугу
-                    </button>
-                </form>
-            </details>
-        </section>
-
-        <section class="admin-section-card">
-            <div class="admin-section-head admin-section-head--compact">
-                <div>
-                    <span class="label">Каталог</span>
-                    <h2>Список услуг</h2>
-                </div>
-
-                <strong class="admin-count">
-                    6 шт.
-                </strong>
-            </div>
-
-            <form method="get" action="services.html" class="admin-list-filter admin-list-filter--services">
-                <div class="form-group">
-                    <label for="search">Поиск</label>
-                    <input
-                        type="text"
-                        id="search"
-                        name="search"
-                        value=""
-                        placeholder="Название, описание, категория"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="category">Категория</label>
-                    <select id="category" name="category">
-                        <option value="">Все категории</option>
-
-                                                    <option
-                                value="Техническое обслуживание"
-                                                            >
-                                Техническое обслуживание                            </option>
-                                                    <option
-                                value="Диагностика"
-                                                            >
-                                Диагностика                            </option>
-                                                    <option
-                                value="Ремонт"
-                                                            >
-                                Ремонт                            </option>
-                                            </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="status">Статус</label>
-                    <select id="status" name="status">
-                        <option value="">Все</option>
-                        <option value="active" >Активные</option>
-                        <option value="hidden" >Скрытые</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="price_from">Цена от</label>
-                    <input
-                        type="number"
-                        id="price_from"
-                        name="price_from"
-                        min="0"
-                        step="1"
-                        value=""
-                        placeholder="1000"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="price_to">Цена до</label>
-                    <input
-                        type="number"
-                        id="price_to"
-                        name="price_to"
-                        min="0"
-                        step="1"
-                        value=""
-                        placeholder="5000"
-                    >
-                </div>
-
-                <button type="submit" class="btn btn--orange btn--small">
-                    Найти
-                </button>
-
-                <a href="services.html" class="btn btn--light btn--small">
-                    Сбросить
-                </a>
-            </form>
-
-                            <div class="admin-services-list">
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Техническое обслуживание                                    </span>
-
-                                    <h3>Замена моторного масла</h3>
-
-                                    <p>Замена масла и масляного фильтра</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>1 800 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>1 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>5%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>4</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>1 800 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-1.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="1">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Замена моторного масла"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                    selected                                                >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                                                                    >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                                                                    >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="1800.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="60"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="5"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-1.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Замена масла и масляного фильтра</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="1">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="1">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Техническое обслуживание                                    </span>
-
-                                    <h3>Замена свечей зажигания</h3>
-
-                                    <p>Замена комплекта свечей зажигания</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>1 600 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>1 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>5%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>2</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>0 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-5.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="5">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Замена свечей зажигания"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                    selected                                                >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                                                                    >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                                                                    >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="1600.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="60"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="5"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-5.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Замена комплекта свечей зажигания</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="5">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="5">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Диагностика                                    </span>
-
-                                    <h3>Диагностика двигателя</h3>
-
-                                    <p>Полная проверка двигателя: компрессия, форсунки, зажигание</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>2 500 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>2 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>5%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>3</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>0 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-3.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="3">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Диагностика двигателя"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                                                                    >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                    selected                                                >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                                                                    >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="2500.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="120"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="5"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-3.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Полная проверка двигателя: компрессия, форсунки, зажигание</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="3">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="3">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Диагностика                                    </span>
-
-                                    <h3>Компьютерная диагностика</h3>
-
-                                    <p>Считывание и расшифровка ошибок блоков управления</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>2 000 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>1 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>5%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>5</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>2 000 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-2.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="2">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Компьютерная диагностика"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                                                                    >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                    selected                                                >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                                                                    >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="2000.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="60"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="5"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-2.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Считывание и расшифровка ошибок блоков управления</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="2">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="2">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Ремонт                                    </span>
-
-                                    <h3>Ремонт тормозной системы</h3>
-
-                                    <p>Замена колодок и дисков, прокачка тормозной жидкости</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>4 500 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>3 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>7%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>2</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>4 500 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-4.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="4">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Ремонт тормозной системы"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                                                                    >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                                                                    >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                    selected                                                >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="4500.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="180"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="7"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-4.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Замена колодок и дисков, прокачка тормозной жидкости</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="4">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="4">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                            
-                        <article class="admin-service-card ">
-                            <div class="admin-service-card__head">
-                                <div>
-                                    <span class="admin-card-time">
-                                        Шиномонтаж                                    </span>
-
-                                    <h3>Шиномонтаж (комплект)</h3>
-
-                                    <p>Снятие, монтаж и балансировка четырёх колёс</p>
-                                </div>
-
-                                <span class="status-badge status-badge--done">
-                                    Активна                                </span>
-                            </div>
-
-                            <div class="record-card__meta">
-                                <div>
-                                    <span>Стоимость</span>
-                                    <strong>2 400 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Длительность</span>
-                                    <strong>1 ч.</strong>
-                                </div>
-
-                                <div>
-                                    <span>Бонусы</span>
-                                    <strong>5%</strong>
-                                </div>
-
-                                <div>
-                                    <span>Заявок</span>
-                                    <strong>2</strong>
-                                </div>
-
-                                <div>
-                                    <span>Выручка</span>
-                                    <strong>0 ₽</strong>
-                                </div>
-
-                                <div>
-                                    <span>Картинка</span>
-                                    <strong>assets/images/service-6.jpg</strong>
-                                </div>
-                            </div>
-
-                            <details class="admin-more">
-                                <summary>Редактировать</summary>
-
-                                <form method="post" action="services.html" class="admin-service-edit-form">
-                                    <input type="hidden" name="action" value="update_service">
-                                    <input type="hidden" name="service_id" value="6">
-
-                                    <div class="form-group">
-                                        <label>Название *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value="Шиномонтаж (комплект)"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Категория *</label>
-                                        <select name="category" required>
-                                                                                            <option
-                                                    value="Техническое обслуживание"
-                                                                                                    >
-                                                    Техническое обслуживание                                                </option>
-                                                                                            <option
-                                                    value="Диагностика"
-                                                                                                    >
-                                                    Диагностика                                                </option>
-                                                                                            <option
-                                                    value="Ремонт"
-                                                                                                    >
-                                                    Ремонт                                                </option>
-                                                                                    </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Стоимость, ₽ *</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            min="1"
-                                            step="1"
-                                            value="2400.00"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Длительность, мин. *</label>
-                                        <input
-                                            type="number"
-                                            name="duration_minutes"
-                                            min="15"
-                                            step="15"
-                                            value="60"
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Бонусы, %</label>
-                                        <input
-                                            type="number"
-                                            name="bonus_percent"
-                                            min="0"
-                                            max="50"
-                                            step="0.5"
-                                            value="5"
-                                        >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Картинка</label>
-                                        <input
-                                            type="text"
-                                            name="image"
-                                            value="assets/images/service-6.jpg"
-                                            placeholder="assets/img/services/service-1.jpg"
-                                        >
-                                    </div>
-
-                                    <div class="form-group admin-service-edit-form__description">
-                                        <label>Описание *</label>
-                                        <textarea name="description" required>Снятие, монтаж и балансировка четырёх колёс</textarea>
-                                    </div>
-
-                                    <label class="admin-check">
-                                        <input
-                                            type="checkbox"
-                                            name="is_active"
-                                            checked                                        >
-                                        <span>Показывать услугу на сайте</span>
-                                    </label>
-
-                                    <button type="submit" class="btn btn--orange btn--small">
-                                        Сохранить изменения
-                                    </button>
-                                </form>
-
-                                <div class="admin-service-card__actions">
-                                    <form method="post" action="services.html">
-                                        <input type="hidden" name="action" value="toggle_service">
-                                        <input type="hidden" name="service_id" value="6">
-                                        <input
-                                            type="hidden"
-                                            name="is_active"
-                                            value="0"
-                                        >
-
-                                        <button type="submit" class="btn btn--light btn--small">
-                                            Скрыть услугу                                        </button>
-                                    </form>
-
-                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
-                                        <input type="hidden" name="action" value="delete_service">
-                                        <input type="hidden" name="service_id" value="6">
-
-                                        <button type="submit" class="btn btn--danger btn--small">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
-                            </details>
-                        </article>
-                                    </div>
-                    </section>
-    </div>
-</section>
-
+<main>
+<section class="admin-page">
+    <div class="container">
+        <div class="admin-hero admin-hero--single">
+            <div>
+                <span class="label">Администрирование</span>
+
+                <h1>Управление услугами</h1>
+
+                <p>
+                    Здесь администратор добавляет услуги, меняет стоимость,
+                    длительность, бонусы и видимость услуги на сайте.
+                </p>
+            </div>
+        </div>
+
+        
+        
+        <div class="admin-stats-grid admin-stats-grid--services">
+            <article class="admin-stat-card">
+                <span>Всего услуг</span>
+                <strong>6</strong>
+                <p>в базе данных</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Активные</span>
+                <strong>6</strong>
+                <p>показываются клиентам</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Скрытые</span>
+                <strong>0</strong>
+                <p>не доступны для записи</p>
+            </article>
+
+            <article class="admin-stat-card">
+                <span>Найдено</span>
+                <strong>6</strong>
+                <p>по текущему фильтру</p>
+            </article>
+        </div>
+
+        <section class="admin-section-card">
+            <details class="admin-collapsible">
+                <summary>
+                    <span>
+                        <b>Добавить услугу</b>
+                        <small>Название, цена, длительность, бонусы и изображение</small>
+                    </span>
+                </summary>
+
+                <form method="post" action="services.html" class="admin-service-form admin-service-form--collapsible">
+                    <input type="hidden" name="action" value="create_service">
+
+                    <div class="form-group">
+                        <label for="new_name">Название *</label>
+                        <input
+                            type="text"
+                            id="new_name"
+                            name="name"
+                            placeholder="Например: Замена аккумулятора"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_category">Категория *</label>
+                        <select id="new_category" name="category" required>
+                                                            <option value="Техническое обслуживание">
+                                    Техническое обслуживание                                </option>
+                                                            <option value="Диагностика">
+                                    Диагностика                                </option>
+                                                            <option value="Ремонт">
+                                    Ремонт                                </option>
+                                                    </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_price">Стоимость, ₽ *</label>
+                        <input
+                            type="number"
+                            id="new_price"
+                            name="price"
+                            min="1"
+                            step="1"
+                            placeholder="2500"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_duration">Длительность, мин. *</label>
+                        <input
+                            type="number"
+                            id="new_duration"
+                            name="duration_minutes"
+                            min="15"
+                            step="15"
+                            placeholder="60"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_bonus">Бонусы, %</label>
+                        <input
+                            type="number"
+                            id="new_bonus"
+                            name="bonus_percent"
+                            min="0"
+                            max="50"
+                            step="0.5"
+                            value="5"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_image">Картинка</label>
+                        <input
+                            type="text"
+                            id="new_image"
+                            name="image"
+                            placeholder="assets/images/service-1.jpg"
+                        >
+                    </div>
+
+                    <div class="form-group admin-service-form__description">
+                        <label for="new_description">Описание *</label>
+                        <textarea
+                            id="new_description"
+                            name="description"
+                            placeholder="Краткое описание услуги для карточки и формы записи"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <label class="admin-check">
+                        <input type="checkbox" name="is_active" checked>
+                        <span>Показывать услугу на сайте</span>
+                    </label>
+
+                    <button type="submit" class="btn btn--orange">
+                        Добавить услугу
+                    </button>
+                </form>
+            </details>
+        </section>
+
+        <section class="admin-section-card">
+            <div class="admin-section-head admin-section-head--compact">
+                <div>
+                    <span class="label">Каталог</span>
+                    <h2>Список услуг</h2>
+                </div>
+
+                <strong class="admin-count">
+                    6 шт.
+                </strong>
+            </div>
+
+            <form method="get" action="services.html" class="admin-list-filter admin-list-filter--services">
+                <div class="form-group">
+                    <label for="search">Поиск</label>
+                    <input
+                        type="text"
+                        id="search"
+                        name="search"
+                        value=""
+                        placeholder="Название, описание, категория"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Категория</label>
+                    <select id="category" name="category">
+                        <option value="">Все категории</option>
+
+                                                    <option
+                                value="Техническое обслуживание"
+                                                            >
+                                Техническое обслуживание                            </option>
+                                                    <option
+                                value="Диагностика"
+                                                            >
+                                Диагностика                            </option>
+                                                    <option
+                                value="Ремонт"
+                                                            >
+                                Ремонт                            </option>
+                                            </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Статус</label>
+                    <select id="status" name="status">
+                        <option value="">Все</option>
+                        <option value="active" >Активные</option>
+                        <option value="hidden" >Скрытые</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price_from">Цена от</label>
+                    <input
+                        type="number"
+                        id="price_from"
+                        name="price_from"
+                        min="0"
+                        step="1"
+                        value=""
+                        placeholder="1000"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="price_to">Цена до</label>
+                    <input
+                        type="number"
+                        id="price_to"
+                        name="price_to"
+                        min="0"
+                        step="1"
+                        value=""
+                        placeholder="5000"
+                    >
+                </div>
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Найти
+                </button>
+
+                <a href="services.html" class="btn btn--light btn--small">
+                    Сбросить
+                </a>
+            </form>
+
+                            <div class="admin-services-list">
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Техническое обслуживание                                    </span>
+
+                                    <h3>Замена моторного масла</h3>
+
+                                    <p>Замена масла и масляного фильтра</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>1 800 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>1 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>5%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>4</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>1 800 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-1.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="1">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Замена моторного масла"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                    selected                                                >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                                                                    >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                                                                    >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="1800.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="60"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="5"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-1.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Замена масла и масляного фильтра</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="1">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="1">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Техническое обслуживание                                    </span>
+
+                                    <h3>Замена свечей зажигания</h3>
+
+                                    <p>Замена комплекта свечей зажигания</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>1 600 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>1 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>5%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>0 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-5.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="5">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Замена свечей зажигания"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                    selected                                                >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                                                                    >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                                                                    >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="1600.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="60"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="5"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-5.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Замена комплекта свечей зажигания</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="5">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="5">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Диагностика                                    </span>
+
+                                    <h3>Диагностика двигателя</h3>
+
+                                    <p>Полная проверка двигателя: компрессия, форсунки, зажигание</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>2 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>2 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>5%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>3</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>0 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-3.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="3">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Диагностика двигателя"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                                                                    >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                    selected                                                >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                                                                    >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="2500.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="120"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="5"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-3.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Полная проверка двигателя: компрессия, форсунки, зажигание</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="3">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="3">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Диагностика                                    </span>
+
+                                    <h3>Компьютерная диагностика</h3>
+
+                                    <p>Считывание и расшифровка ошибок блоков управления</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>2 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>1 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>5%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>5</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>2 000 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-2.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="2">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Компьютерная диагностика"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                                                                    >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                    selected                                                >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                                                                    >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="2000.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="60"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="5"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-2.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Считывание и расшифровка ошибок блоков управления</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="2">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="2">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Ремонт                                    </span>
+
+                                    <h3>Ремонт тормозной системы</h3>
+
+                                    <p>Замена колодок и дисков, прокачка тормозной жидкости</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>4 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>3 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>7%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>4 500 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-4.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="4">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Ремонт тормозной системы"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                                                                    >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                                                                    >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                    selected                                                >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="4500.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="180"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="7"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-4.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Замена колодок и дисков, прокачка тормозной жидкости</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="4">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="4">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                            
+                        <article class="admin-service-card ">
+                            <div class="admin-service-card__head">
+                                <div>
+                                    <span class="admin-card-time">
+                                        Шиномонтаж                                    </span>
+
+                                    <h3>Шиномонтаж (комплект)</h3>
+
+                                    <p>Снятие, монтаж и балансировка четырёх колёс</p>
+                                </div>
+
+                                <span class="status-badge status-badge--done">
+                                    Активна                                </span>
+                            </div>
+
+                            <div class="record-card__meta">
+                                <div>
+                                    <span>Стоимость</span>
+                                    <strong>2 400 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Длительность</span>
+                                    <strong>1 ч.</strong>
+                                </div>
+
+                                <div>
+                                    <span>Бонусы</span>
+                                    <strong>5%</strong>
+                                </div>
+
+                                <div>
+                                    <span>Заявок</span>
+                                    <strong>2</strong>
+                                </div>
+
+                                <div>
+                                    <span>Выручка</span>
+                                    <strong>0 ₽</strong>
+                                </div>
+
+                                <div>
+                                    <span>Картинка</span>
+                                    <strong>assets/images/service-6.jpg</strong>
+                                </div>
+                            </div>
+
+                            <details class="admin-more">
+                                <summary>Редактировать</summary>
+
+                                <form method="post" action="services.html" class="admin-service-edit-form">
+                                    <input type="hidden" name="action" value="update_service">
+                                    <input type="hidden" name="service_id" value="6">
+
+                                    <div class="form-group">
+                                        <label>Название *</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value="Шиномонтаж (комплект)"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Категория *</label>
+                                        <select name="category" required>
+                                                                                            <option
+                                                    value="Техническое обслуживание"
+                                                                                                    >
+                                                    Техническое обслуживание                                                </option>
+                                                                                            <option
+                                                    value="Диагностика"
+                                                                                                    >
+                                                    Диагностика                                                </option>
+                                                                                            <option
+                                                    value="Ремонт"
+                                                                                                    >
+                                                    Ремонт                                                </option>
+                                                                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Стоимость, ₽ *</label>
+                                        <input
+                                            type="number"
+                                            name="price"
+                                            min="1"
+                                            step="1"
+                                            value="2400.00"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Длительность, мин. *</label>
+                                        <input
+                                            type="number"
+                                            name="duration_minutes"
+                                            min="15"
+                                            step="15"
+                                            value="60"
+                                            required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Бонусы, %</label>
+                                        <input
+                                            type="number"
+                                            name="bonus_percent"
+                                            min="0"
+                                            max="50"
+                                            step="0.5"
+                                            value="5"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Картинка</label>
+                                        <input
+                                            type="text"
+                                            name="image"
+                                            value="assets/images/service-6.jpg"
+                                            placeholder="assets/images/service-1.jpg"
+                                        >
+                                    </div>
+
+                                    <div class="form-group admin-service-edit-form__description">
+                                        <label>Описание *</label>
+                                        <textarea name="description" required>Снятие, монтаж и балансировка четырёх колёс</textarea>
+                                    </div>
+
+                                    <label class="admin-check">
+                                        <input
+                                            type="checkbox"
+                                            name="is_active"
+                                            checked                                        >
+                                        <span>Показывать услугу на сайте</span>
+                                    </label>
+
+                                    <button type="submit" class="btn btn--orange btn--small">
+                                        Сохранить изменения
+                                    </button>
+                                </form>
+
+                                <div class="admin-service-card__actions">
+                                    <form method="post" action="services.html">
+                                        <input type="hidden" name="action" value="toggle_service">
+                                        <input type="hidden" name="service_id" value="6">
+                                        <input
+                                            type="hidden"
+                                            name="is_active"
+                                            value="0"
+                                        >
+
+                                        <button type="submit" class="btn btn--light btn--small">
+                                            Скрыть услугу                                        </button>
+                                    </form>
+
+                                    <form method="post" action="services.html" onsubmit="return confirm('Удалить услугу? Если у нее есть заявки, услуга будет скрыта.');">
+                                        <input type="hidden" name="action" value="delete_service">
+                                        <input type="hidden" name="service_id" value="6">
+
+                                        <button type="submit" class="btn btn--danger btn--small">
+                                            Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
+                        </article>
+                                    </div>
+                    </section>
+    </div>
+</section>
+
 
 </main>
 

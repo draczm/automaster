@@ -64,6 +64,7 @@ if ($headerRole === 'admin') {
     <link rel="stylesheet" href="<?= $basePath ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= $basePath ?>assets/css/admin.css">
     <link rel="stylesheet" href="<?= $basePath ?>assets/css/home.css">
+    <link rel="stylesheet" href="<?= $basePath ?>assets/css/pages.css">
 </head>
 <body>
 

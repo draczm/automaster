@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CARREPAIR — ремонт автомобилей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CARREPAIR — ремонт автомобилей, онлайн-запись, личный кабинет и бонусная система.">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <a href="master-schedule.html" class="logo">
+            <span class="logo__icon">CR</span>
+            <span class="logo__text">CARREPAIR</span>
+        </a>
+
+        <button class="burger" type="button" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav nav--center" id="mainNav">
+            
+                            <a
+                    href="master-schedule.html"
+                    class="nav__button is-active"
+                >
+                    Ежедневник
+                </a>
+
+                <a
+                    href="master-training.html"
+                    class=""
+                >
+                    Обучение
+                </a>
+            
+                    </nav>
+
+        <div class="header-actions">
+            
+            
+                            <a
+                    href="master-schedule.html"
+                    class="user-name is-active"
+                >
+                    Александр Петров                </a>
+
+                <a href="../../index.html" class="header-login">Выйти</a>
+            
+                    </div>
+    </div>
+</header>
+
+
+<div class="toast" id="toast"></div>
+
+<main>
+<section class="master-page">
+    <div class="container">
+        <div class="master-hero">
+            <div>
+                <span class="label">Кабинет мастера</span>
+
+                <h1>Ежедневник</h1>
+
+                <p>
+                    Александр Петров,
+                    здесь показаны записи на выбранную дату, статусы работ и краткая статистика.
+                </p>
+            </div>
+
+            <form method="get" action="master-schedule.html" class="master-date-form">
+                <label for="date">Дата</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value="2026-11-26"
+                >
+
+                <button type="submit" class="btn btn--orange btn--small">
+                    Показать
+                </button>
+            </form>
+        </div>
+
+        
+        
+        <div class="master-stats-grid">
+            <article class="master-stat-card">
+                <span>День</span>
+                <strong>0</strong>
+                <p>оказано услуг</p>
+                <b>0 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Неделя</span>
+                <strong>0</strong>
+                <p>оказано услуг</p>
+                <b>0 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Месяц</span>
+                <strong>2</strong>
+                <p>оказано услуг</p>
+                <b>1 890 ₽</b>
+            </article>
+
+            <article class="master-stat-card">
+                <span>Активные</span>
+                <strong>0</strong>
+                <p>на выбранную дату</p>
+                <b>0 отменено</b>
+            </article>
+        </div>
+
+        <section class="master-section-card master-calendar">
+            <div class="profile-section-head">
+                <div>
+                    <span class="label">Календарь</span>
+                    <h2>Неделя 23.11–27.11.2026</h2>
+                </div>
+
+                <div class="master-calendar-nav">
+                    <a href="master-schedule~b432f175.html" class="btn btn--light btn--small">← Прошлая</a>
+                    <a href="master-schedule~b3327b7f.html" class="btn btn--orange btn--small">Сегодня</a>
+                    <a href="master-schedule~fec93e6b.html" class="btn btn--light btn--small">Следующая →</a>
+                </div>
+            </div>
+
+            <div class="admin-calendar-legend">
+                <span><i class="legend-dot legend-dot--new"></i>Новая</span>
+                <span><i class="legend-dot legend-dot--confirmed"></i>Подтверждена</span>
+                <span><i class="legend-dot legend-dot--work"></i>В работе</span>
+                <span><i class="legend-dot legend-dot--done"></i>Оказана</span>
+                <span><i class="legend-dot legend-dot--moved"></i>Перенесена</span>
+                <span><i class="legend-dot legend-dot--cancel"></i>Отменена</span>
+            </div>
+
+            <div class="admin-calendar-scroll">
+                <div class="admin-calendar-grid">
+                    <div class="admin-calendar-corner">Время</div>
+
+                                            <a
+                            href="master-schedule~4275a66b.html"
+                            class="admin-calendar-day-head  "
+                        >
+                            <strong>Понедельник</strong>
+                            <span>23.11.2026</span>
+                        </a>
+                                            <a
+                            href="master-schedule~d4e1a836.html"
+                            class="admin-calendar-day-head  "
+                        >
+                            <strong>Вторник</strong>
+                            <span>24.11.2026</span>
+                        </a>
+                                            <a
+                            href="master-schedule~5e3256ae.html"
+                            class="admin-calendar-day-head  "
+                        >
+                            <strong>Среда</strong>
+                            <span>25.11.2026</span>
+                        </a>
+                                            <a
+                            href="master-schedule~43268d0d.html"
+                            class="admin-calendar-day-head  is-selected"
+                        >
+                            <strong>Четверг</strong>
+                            <span>26.11.2026</span>
+                        </a>
+                                            <a
+                            href="master-schedule~40508d00.html"
+                            class="admin-calendar-day-head  "
+                        >
+                            <strong>Пятница</strong>
+                            <span>27.11.2026</span>
+                        </a>
+                    
+                    <div class="admin-calendar-time-column" style="height: 1040px;">
+                                                    <div class="admin-calendar-time" style="top: 0px;">
+                                09:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 52px;">
+                                09:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 104px;">
+                                10:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 156px;">
+                                10:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 208px;">
+                                11:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 260px;">
+                                11:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 312px;">
+                                12:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 364px;">
+                                12:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 416px;">
+                                13:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 468px;">
+                                13:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 520px;">
+                                14:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 572px;">
+                                14:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 624px;">
+                                15:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 676px;">
+                                15:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 728px;">
+                                16:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 780px;">
+                                16:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 832px;">
+                                17:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 884px;">
+                                17:30                            </div>
+                                                    <div class="admin-calendar-time" style="top: 936px;">
+                                18:00                            </div>
+                                                    <div class="admin-calendar-time" style="top: 988px;">
+                                18:30                            </div>
+                                            </div>
+
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1040px;"
+                        >
+                                                            <div class="admin-calendar-line" style="top: 0px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 52px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 104px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 156px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 208px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 260px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 312px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 364px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 416px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 468px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 520px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 572px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 624px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 676px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 728px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 780px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 832px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 884px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 936px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 988px;"></div>
+                            
+                                                            <div class="admin-calendar-empty-day">Записей нет</div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1040px;"
+                        >
+                                                            <div class="admin-calendar-line" style="top: 0px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 52px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 104px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 156px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 208px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 260px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 312px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 364px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 416px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 468px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 520px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 572px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 624px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 676px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 728px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 780px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 832px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 884px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 936px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 988px;"></div>
+                            
+                            
+                                                            <a
+                                    href="master-schedule~d4e1a836.html"
+                                    class="admin-calendar-event admin-calendar-event--new"
+                                    style="top: 104px; height: 202px;"
+                                >
+                                    <div class="admin-calendar-event__time">10:00 — 12:00</div>
+                                    <strong>Диагностика двигателя</strong>
+                                    <span>Андрей Васильев</span>
+                                    <span>Hyundai Solaris</span>
+                                    <div class="admin-calendar-event__bottom">
+                                        <em class="status-badge status-badge--new">Новая</em>
+                                    </div>
+                                </a>
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1040px;"
+                        >
+                                                            <div class="admin-calendar-line" style="top: 0px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 52px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 104px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 156px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 208px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 260px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 312px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 364px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 416px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 468px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 520px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 572px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 624px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 676px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 728px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 780px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 832px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 884px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 936px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 988px;"></div>
+                            
+                                                            <div class="admin-calendar-empty-day">Записей нет</div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1040px;"
+                        >
+                                                            <div class="admin-calendar-line" style="top: 0px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 52px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 104px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 156px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 208px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 260px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 312px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 364px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 416px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 468px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 520px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 572px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 624px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 676px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 728px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 780px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 832px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 884px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 936px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 988px;"></div>
+                            
+                                                            <div class="admin-calendar-empty-day">Записей нет</div>
+                            
+                                                    </div>
+                                            <div
+                            class="admin-calendar-day-column "
+                            style="height: 1040px;"
+                        >
+                                                            <div class="admin-calendar-line" style="top: 0px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 52px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 104px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 156px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 208px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 260px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 312px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 364px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 416px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 468px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 520px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 572px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 624px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 676px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 728px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 780px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 832px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 884px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 936px;"></div>
+                                                            <div class="admin-calendar-line" style="top: 988px;"></div>
+                            
+                                                            <div class="admin-calendar-empty-day">Записей нет</div>
+                            
+                                                    </div>
+                                    </div>
+            </div>
+        </section>
+
+        <section class="master-section-card">
+            <div class="profile-section-head">
+                <div>
+                    <span class="label">Записи</span>
+                    <h2>26.11.2026</h2>
+                </div>
+            </div>
+
+                            <p class="empty-text">На выбранную дату записей нет.</p>
+                    </section>
+    </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div>
+                <strong>CARREPAIR</strong>
+                <p>Автоматизированная система записи, обслуживания и контроля заявок автомастерской.</p>
+            </div>
+
+            <div>
+                <span>Йошкар-Ола</span>
+                <span>2026</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/demo.js" defer></script>
+</body>
+</html>

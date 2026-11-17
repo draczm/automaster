@@ -583,6 +583,75 @@ $allMastersStmt = $pdo->query("
 ");
 $allMasters = $allMastersStmt->fetchAll();
 
+/* ---------- Недельный календарь мастера ---------- */
+function msCalClass($status)
+{
+    return match ($status) {
+        'Оказана', 'Выполнена' => 'admin-calendar-event--done',
+        'В работе' => 'admin-calendar-event--work',
+        'Отменена' => 'admin-calendar-event--cancel',
+        'Подтверждена' => 'admin-calendar-event--confirmed',
+        'Перенесена' => 'admin-calendar-event--moved',
+        'Новая' => 'admin-calendar-event--new',
+        default => 'admin-calendar-event--default'
+    };
+}
+
+$calWeekStart = date('Y-m-d', strtotime('monday this week', strtotime($selectedDate)));
+$calWeekEnd = date('Y-m-d', strtotime($calWeekStart . ' +4 days'));
+$calPrevWeek = date('Y-m-d', strtotime($calWeekStart . ' -7 days'));
+$calNextWeek = date('Y-m-d', strtotime($calWeekStart . ' +7 days'));
+$calToday = date('Y-m-d');
+
+$calStartMin = 9 * 60;
+$calEndMin = 19 * 60;
+$calSlot = 30;
+$calSlotH = 52;
+$calHeight = (int)((($calEndMin - $calStartMin) / $calSlot) * $calSlotH);
+$calDayNames = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница'];
+
+$calDays = [];
+for ($i = 0; $i < 5; $i++) {
+    $d = date('Y-m-d', strtotime($calWeekStart . " +{$i} days"));
+    $calDays[] = ['date' => $d, 'name' => $calDayNames[$i], 'items' => []];
+}
+
+$calStmt = $pdo->prepare("
+    SELECT appointments.*, services.name AS service_name
+    FROM appointments
+    LEFT JOIN services ON services.id = appointments.service_id
+    WHERE appointments.employee_id = ?
+      AND DATE(appointments.start_datetime) BETWEEN ? AND ?
+    ORDER BY appointments.start_datetime ASC
+");
+$calStmt->execute([(int)$employeeId, $calWeekStart, $calWeekEnd]);
+
+foreach ($calStmt->fetchAll() as $row) {
+    $rowDate = date('Y-m-d', strtotime($row['start_datetime']));
+    $s = (int)date('H', strtotime($row['start_datetime'])) * 60 + (int)date('i', strtotime($row['start_datetime']));
+    $e = !empty($row['end_datetime'])
+        ? (int)date('H', strtotime($row['end_datetime'])) * 60 + (int)date('i', strtotime($row['end_datetime']))
+        : $s + max(30, (int)($row['service_duration_minutes'] ?? 60));
+
+    if ($e <= $calStartMin || $s >= $calEndMin) {
+        continue;
+    }
+
+    $cs = max($s, $calStartMin);
+    $ce = min($e, $calEndMin);
+    $row['cal_top'] = (int)((($cs - $calStartMin) / $calSlot) * $calSlotH);
+    $row['cal_height'] = (int)max(44, (($ce - $cs) / $calSlot) * $calSlotH - 6);
+    $row['cal_start'] = sprintf('%02d:%02d', intdiv($s, 60), $s % 60);
+    $row['cal_end'] = sprintf('%02d:%02d', intdiv($e, 60), $e % 60);
+
+    foreach ($calDays as &$calDay) {
+        if ($calDay['date'] === $rowDate) {
+            $calDay['items'][] = $row;
+        }
+    }
+    unset($calDay);
+}
+
 require_once 'includes/header.php';
 ?>
 
@@ -657,6 +726,85 @@ require_once 'includes/header.php';
                 <b><?= (int)($dayStats['canceled_count'] ?? 0) ?> отменено</b>
             </article>
         </div>
+
+        <section class="master-section-card master-calendar">
+            <div class="profile-section-head">
+                <div>
+                    <span class="label">Календарь</span>
+                    <h2>Неделя <?= date('d.m', strtotime($calWeekStart)) ?>–<?= date('d.m.Y', strtotime($calWeekEnd)) ?></h2>
+                </div>
+
+                <div class="master-calendar-nav">
+                    <a href="master-schedule.php?date=<?= htmlspecialchars($calPrevWeek) ?>" class="btn btn--light btn--small">← Прошлая</a>
+                    <a href="master-schedule.php?date=<?= htmlspecialchars($calToday) ?>" class="btn btn--orange btn--small">Сегодня</a>
+                    <a href="master-schedule.php?date=<?= htmlspecialchars($calNextWeek) ?>" class="btn btn--light btn--small">Следующая →</a>
+                </div>
+            </div>
+
+            <div class="admin-calendar-legend">
+                <span><i class="legend-dot legend-dot--new"></i>Новая</span>
+                <span><i class="legend-dot legend-dot--confirmed"></i>Подтверждена</span>
+                <span><i class="legend-dot legend-dot--work"></i>В работе</span>
+                <span><i class="legend-dot legend-dot--done"></i>Оказана</span>
+                <span><i class="legend-dot legend-dot--moved"></i>Перенесена</span>
+                <span><i class="legend-dot legend-dot--cancel"></i>Отменена</span>
+            </div>
+
+            <div class="admin-calendar-scroll">
+                <div class="admin-calendar-grid">
+                    <div class="admin-calendar-corner">Время</div>
+
+                    <?php foreach ($calDays as $calDay): ?>
+                        <a
+                            href="master-schedule.php?date=<?= htmlspecialchars($calDay['date']) ?>"
+                            class="admin-calendar-day-head <?= $calDay['date'] === $calToday ? 'is-today' : '' ?> <?= $calDay['date'] === $selectedDate ? 'is-selected' : '' ?>"
+                        >
+                            <strong><?= htmlspecialchars($calDay['name']) ?></strong>
+                            <span><?= date('d.m.Y', strtotime($calDay['date'])) ?></span>
+                        </a>
+                    <?php endforeach; ?>
+
+                    <div class="admin-calendar-time-column" style="height: <?= $calHeight ?>px;">
+                        <?php for ($m = $calStartMin, $idx = 0; $m < $calEndMin; $m += $calSlot, $idx++): ?>
+                            <div class="admin-calendar-time" style="top: <?= (int)($idx * $calSlotH) ?>px;">
+                                <?= sprintf('%02d:%02d', intdiv($m, 60), $m % 60) ?>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+
+                    <?php foreach ($calDays as $calDay): ?>
+                        <div
+                            class="admin-calendar-day-column <?= $calDay['date'] === $calToday ? 'is-today' : '' ?>"
+                            style="height: <?= $calHeight ?>px;"
+                        >
+                            <?php for ($m = $calStartMin, $idx = 0; $m < $calEndMin; $m += $calSlot, $idx++): ?>
+                                <div class="admin-calendar-line" style="top: <?= (int)($idx * $calSlotH) ?>px;"></div>
+                            <?php endfor; ?>
+
+                            <?php if (empty($calDay['items'])): ?>
+                                <div class="admin-calendar-empty-day">Записей нет</div>
+                            <?php endif; ?>
+
+                            <?php foreach ($calDay['items'] as $ev): ?>
+                                <a
+                                    href="master-schedule.php?date=<?= htmlspecialchars($calDay['date']) ?>"
+                                    class="admin-calendar-event <?= msCalClass($ev['status']) ?>"
+                                    style="top: <?= (int)$ev['cal_top'] ?>px; height: <?= (int)$ev['cal_height'] ?>px;"
+                                >
+                                    <div class="admin-calendar-event__time"><?= htmlspecialchars($ev['cal_start']) ?> — <?= htmlspecialchars($ev['cal_end']) ?></div>
+                                    <strong><?= htmlspecialchars($ev['service_name'] ?? 'Услуга') ?></strong>
+                                    <span><?= htmlspecialchars($ev['client_name'] ?? 'Клиент') ?></span>
+                                    <span><?= htmlspecialchars(trim(($ev['car_brand'] ?? '') . ' ' . ($ev['car_model'] ?? ''))) ?></span>
+                                    <div class="admin-calendar-event__bottom">
+                                        <em class="status-badge <?= msStatusClass($ev['status']) ?>"><?= htmlspecialchars($ev['status']) ?></em>
+                                    </div>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
 
         <section class="master-section-card">
             <div class="profile-section-head">

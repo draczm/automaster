@@ -458,7 +458,7 @@ require_once '../includes/header.php';
                             type="text"
                             id="new_image"
                             name="image"
-                            placeholder="assets/img/services/service-1.jpg"
+                            placeholder="assets/images/service-1.jpg"
                         >
                     </div>
 
@@ -707,7 +707,7 @@ require_once '../includes/header.php';
                                             type="text"
                                             name="image"
                                             value="<?= htmlspecialchars($service['image'] ?? '') ?>"
-                                            placeholder="assets/img/services/service-1.jpg"
+                                            placeholder="assets/images/service-1.jpg"
                                         >
                                     </div>
 
